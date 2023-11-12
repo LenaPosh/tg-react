@@ -1,11 +1,11 @@
 
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
-import Logotext from "./Tgbinaryoptions-transformed.png"
+// import TgBinar from "./Tgbinaryopt.png"
 import './style.css'
 import { MegaMenu } from 'primereact/megamenu';
 import {AiOutlineEuroCircle} from 'react-icons/ai';
-// import SiBitcoinsv from 'react-icons/si';
+
 
 
 const StyledNav = styled.nav`
@@ -50,7 +50,7 @@ export const MenuTop = () => {
         <StyledNav>
 
             <NavLink to="/">
-                <img className='logo-text' alt='' src={Logotext} />
+                {/*<img className='logo-text' alt='' src={TgBinar} />*/}
             </NavLink>
                 <div className="card">
                     <AiOutlineEuroCircle color="orange" size='25'/>
