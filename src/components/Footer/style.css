@@ -1,11 +1,9 @@
 
-/*.menu-items {*/
-/*    margin-right: 20px;*/
-/*    font-size: 20px;*/
-/*    color: #96F1F4;*/
+.menu-items {
+    display: flex;
+    justify-content: space-between;
 
-/*    text-decoration: none;*/
-/*}*/
+}
 
 /*.a {*/
 /*    margin-right: 20px;*/
@@ -15,29 +13,65 @@
 /*    text-decoration: none;*/
 /*}*/
 
-.menu {
-    text-decoration: none;
-    color: #96F1F4;
-    margin-right: 30px;
-    font-family: sans-serif;
-}
+/*.menu {*/
+/*    text-decoration: none;*/
+/*    color: #96F1F4;*/
+/*    margin-right: 30px;*/
+/*    font-family: sans-serif;*/
+/*}*/
 .home {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     text-decoration: none;
     color: #96F1F4;
-    margin-right: 30px;
-    font-family: sans-serif;
+    text-align: center;
+    justify-content: center;
 }
 
 .trade {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     text-decoration: none;
     color: #96F1F4;
-    margin-right: 30px;
-    font-family: sans-serif;
+    text-align: center;
+    justify-content: center;
 }
 
 .wallet {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     text-decoration: none;
     color: #96F1F4;
-    margin-right: 30px;
-    font-family: sans-serif;
+    text-align: center;
+    justify-content: center;
 }
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-decoration: none;
+    color: #96F1F4;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.menu-icon {
+    margin-right: 5px;
+
+    width: 100%
+
+}
+
+.menu-text {
+    display: flex;
+
+    flex-direction: column;
+    text-align: center;
+}
+
+

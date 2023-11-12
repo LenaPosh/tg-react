@@ -12,7 +12,7 @@ const FooterStyle = styled.footer`
   background-color: rgba(0, 0, 0, 0.82);
   text-align: center;
 `
-export const Footer = () => {
+export const AppFooter = () => {
     // const items = [
     //     {label: 'MENU', icon: 'pi-align-justify'},
     //     {label: 'HOME', icon: 'pi pi-fw pi-calendar'},
@@ -25,14 +25,34 @@ export const Footer = () => {
             <FooterStyle className='footer'>
                 <div className='menu-navigation'>
                     <div className='menu-items'>
-                        <NavLink to="/menu" className='menu'><AiOutlineMenu/>MENU
+
+                        <NavLink to="/menu" className='menu'>
+                            <div className='menu-icon'>
+                                <AiOutlineMenu />
+                            </div>
+                            <div className='menu-text'>MENU</div>
                         </NavLink>
 
-                        <NavLink to="/home" className='home'><AiOutlineHome/>HOME
+                        <NavLink to="/home" className='home'>
+                            <div className='menu-icon'>
+                                <AiOutlineHome/>
+                            </div>
+                            <div className='menu-text'>HOME</div>
+
                         </NavLink>
-                        <NavLink to="/trade" className='trade'><AiOutlineRise/> TRADE
+                        <NavLink to="/trade" className='trade'>
+                            <div className='menu-icon'>
+                                <AiOutlineRise/>
+                            </div>
+                            <div className='menu-text'>TRADE</div>
                         </NavLink>
-                        <NavLink to="/wallet" className='wallet'><AiOutlineWallet/>WALLET
+
+                        <NavLink to="/wallet" className='wallet'>
+                            <div className='menu-icon'>
+                                <AiOutlineWallet/>
+                            </div>
+                            <div className='menu-text'>WALLET</div>
+
                         </NavLink>
 
                     </div>
