@@ -1,0 +1,43 @@
+
+/*.menu-items {*/
+/*    margin-right: 20px;*/
+/*    font-size: 20px;*/
+/*    color: #96F1F4;*/
+
+/*    text-decoration: none;*/
+/*}*/
+
+/*.a {*/
+/*    margin-right: 20px;*/
+/*    font-size: 20px;*/
+/*    color: #96F1F4;*/
+/*    display: none;*/
+/*    text-decoration: none;*/
+/*}*/
+
+.menu {
+    text-decoration: none;
+    color: #96F1F4;
+    margin-right: 30px;
+    font-family: sans-serif;
+}
+.home {
+    text-decoration: none;
+    color: #96F1F4;
+    margin-right: 30px;
+    font-family: sans-serif;
+}
+
+.trade {
+    text-decoration: none;
+    color: #96F1F4;
+    margin-right: 30px;
+    font-family: sans-serif;
+}
+
+.wallet {
+    text-decoration: none;
+    color: #96F1F4;
+    margin-right: 30px;
+    font-family: sans-serif;
+}

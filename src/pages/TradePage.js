@@ -1,13 +1,11 @@
-import React from "react";
-import {AppHeader} from "../components/Header/Header";
 import {MenuTop} from "../components/MenuTop/MenuTop";
 import {Footer} from "../components/Footer/Footer";
 
-export const HomePage = () => {
+export const TradePage = () => {
     return (
         <>
             <MenuTop/>
-            <AppHeader/>
+            <h1>Page trade</h1>
             <Footer/>
 
         </>
