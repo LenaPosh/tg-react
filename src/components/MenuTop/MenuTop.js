@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
-import LogoTB from "./Free_Sample_By_Wix.jpg"
+import LogoTB from "../../img/Free_Sample_By_Wix.jpg"
 import './style.css'
 import {Menubar} from 'primereact/menubar';
 import {AiOutlineEuroCircle} from 'react-icons/ai';
