@@ -17,6 +17,14 @@ const StyledNav = styled.nav`
   background-color: #2c2c2c;
   color: #D67E35;
   height: 50px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  
+
 `
 
 

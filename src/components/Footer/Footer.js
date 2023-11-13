@@ -5,7 +5,7 @@ import './style.css'
 import {AiOutlineMenu, AiOutlineHome, AiOutlineRise, AiOutlineWallet} from 'react-icons/ai';
 
 export const Screen = styled.div`
-    min-height: 100%;
+    min-height: 100vh;
 `
 
 const FooterStyle = styled.footer`
@@ -13,14 +13,15 @@ const FooterStyle = styled.footer`
   color: #fff;
   background-color: #2c2c2c;
   text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+
 `
 export const AppFooter = () => {
-    // const items = [
-    //     {label: 'MENU', icon: 'pi-align-justify'},
-    //     {label: 'HOME', icon: 'pi pi-fw pi-calendar'},
-    //     {label: 'TRADE', icon: 'pi pi-fw pi-pencil'},
-    //     {label: 'WALLET', icon: 'pi pi-fw pi-file'}
-    // ];
+
     return (
         <>
             <FooterStyle className='footer'>

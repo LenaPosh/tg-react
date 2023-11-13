@@ -16,6 +16,12 @@ export const MenuPage = () => {
                 <h1>Page menu</h1>
                 <h1>Page menu</h1>
                 <h1>Page menu</h1>
+                <h1>Page menu</h1>
+                <h1>Page menu</h1>
+                <h1>Page menu</h1>
+                <h1>Page menu</h1>
+                <h1>Page menu</h1>
+                <h1>Page menu</h1>
                 <AppFooter/>
             </Screen>
 
