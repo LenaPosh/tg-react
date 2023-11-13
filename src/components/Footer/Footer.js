@@ -4,12 +4,14 @@ import {NavLink} from "react-router-dom";
 import './style.css'
 import {AiOutlineMenu, AiOutlineHome, AiOutlineRise, AiOutlineWallet} from 'react-icons/ai';
 
+export const Screen = styled.div`
+    min-height: 100%;
+`
+
 const FooterStyle = styled.footer`
-  padding: 35px 0;
-
+  padding: 25px 0;
   color: #fff;
-
-  background-color: rgba(0, 0, 0, 0.82);
+  background-color: #2c2c2c;
   text-align: center;
 `
 export const AppFooter = () => {
@@ -20,7 +22,6 @@ export const AppFooter = () => {
     //     {label: 'WALLET', icon: 'pi pi-fw pi-file'}
     // ];
     return (
-
         <>
             <FooterStyle className='footer'>
                 <div className='menu-navigation'>
@@ -58,19 +59,6 @@ export const AppFooter = () => {
                     </div>
                 </div>
 
-                {/*<div className="menu-items">*/}
-                {/*    <div className="menu-text">*/}
-                {/*        <div className="menu-icon">*/}
-                {/*            <TabMenu model={items}/>*/}
-                {/*        </div>*/}
-
-                {/*    </div>*/}
-                {/*</div>*/}
-
-                {/*<a href='#menu'>MENU</a>*/}
-                {/*<a href='#home'>HOME</a>*/}
-                {/*<a href='#trade'>TRADE</a>*/}
-                {/*<a href='#wallet'>WALLET</a>*/}
             </FooterStyle>
         </>
 

@@ -1,11 +1,9 @@
-
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
-import TgBinar from "./Tgbinaryoptions-transformed.png"
+import LogoTB from "./Free_Sample_By_Wix.jpg"
 import './style.css'
-import { MegaMenu } from 'primereact/megamenu';
+import {Menubar} from 'primereact/menubar';
 import {AiOutlineEuroCircle} from 'react-icons/ai';
-
 
 
 const StyledNav = styled.nav`
@@ -13,8 +11,8 @@ const StyledNav = styled.nav`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
-  background-color: rgba(0, 0, 0, 0.82);
+  padding: 25px 0;
+  background-color: #2c2c2c;
   color: #D67E35;
   height: 50px;
 `
@@ -26,23 +24,20 @@ const StyledNav = styled.nav`
 // `
 
 
-
 export const MenuTop = () => {
     const items = [
         {
             label: '0.00000',
             items: [
-                [
-                    {
-                        icon: 'pi-wallet',
-                        label: '0.00000',
-                        items: [{ label: '0.00000' }, { label: '0.00000' }]
-                    },
-                    {
-                        label: '0.00000',
-                        items: [{ label: '0.00000' }, { label: '0.00000' }]
-                    }
-                ]
+                {
+                    icon: 'pi-wallet pi pi-fw',
+                    label: '0.00000',
+                    items: [{label: '0.00000'}, {label: '0.00000'}]
+                },
+                {
+                    label: '0.00000',
+                    items: [{label: '0.00000'}, {label: '0.00000'}]
+                }
             ]
         }
     ]
@@ -50,16 +45,16 @@ export const MenuTop = () => {
         <StyledNav>
 
             <NavLink to="/">
-                <img className='logo-text' alt='' src={TgBinar} />
+                <img className='logo-text' alt='' src={LogoTB} />
             </NavLink>
-                <div className="app-header-card">
-                    <AiOutlineEuroCircle color="orange" size='25'/>
-                    <MegaMenu model={items} className='app-header-menu' breakpoint="960px" />
-                </div>
+            <div className="app-header-card">
+                <AiOutlineEuroCircle color="orange" size='25'/>
+                <Menubar model={items} className='app-header-menu' breakpoint="960px" />
+            </div>
 
         </StyledNav>
 
 
-
     )
 }
+
