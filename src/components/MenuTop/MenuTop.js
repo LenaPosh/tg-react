@@ -2,19 +2,13 @@ import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 import LogoTB from "../../img/Free_Sample_By_Wix.jpg"
 import './style.css'
+import {useState} from "react";
+import { SiTether } from "react-icons/si";
+import { SiEthereum } from "react-icons/si";
+import { SiLitecoin } from "react-icons/si";
+import { FaBitcoin } from "react-icons/fa";
 
-// import {AiOutlineEuroCircle} from 'react-icons/ai';
-// import { Dropdown } from 'primereact/dropdown';
-// import {useRef, useState} from "react";
-// import {
-//     BsBoxArrowRight,
-//     BsFillBellFill, BsFillGearFill,
-//     BsFillPersonFill,
-//     BsGeoAltFill,
-//     BsGiftFill,
-//     BsPersonCircle
-// } from "react-icons/bs";
-// import {useClickOutside} from "primereact/hooks";
+
 
 
 const StyledNav = styled.nav`
@@ -24,7 +18,7 @@ const StyledNav = styled.nav`
   align-items: center;
   padding: 25px 0;
   background-color: #2c2c2c;
-  color: #D67E35;
+  color: #fff;
   height: 50px;
 
   position: fixed;
@@ -33,58 +27,31 @@ const StyledNav = styled.nav`
   right: 0;
   width: 100vw;
   `
-
+// const Button = styled.button`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//
+// `
 
 export const MenuTop = () => {
-    // const [isOpen, setOpen] = useState(false);
-    // const menuRef = useRef(null);
-    // useClickOutside(menuRef, () => {
-    //     if (isOpen) setTimeout(() => setOpen(false), 50);
-    // });
-    // const [selectedCurrency, setSelectedCurrency] = useState(null);
-    // const currency = [
-    //     { name: '0.00000', code: 'pi-bitcoin' },
-    //     { name: '0.00000', code: 'pi-bitcoin' },
-    //     { name: '0.00000', code: 'pi-bitcoin' },
-    //     { name: '0.00000', code: 'pi-bitcoin' },
-    //     { name: '0.00000', code: 'pi-bitcoin' },
-    // ];
-    //
-    // const selectedCurrencyTemplate = (option, props) => {
-    //     if (option) {
-    //         return (
-    //             <div className="flex align-items-center">
-    //                 <img alt={option.name} src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png" className={`mr-2 flag flag-${option.code.toLowerCase()}`} style={{ width: '18px' }} />
-    //                 <div>{option.name}</div>
-    //             </div>
-    //         );
-    //     }
-    //
-    //     return <span>{props.placeholder}</span>;
-    // };
-    //
-    // const currencyOptionTemplate = (option) => {
-    //     return (
-    //         <div className="flex align-items-center">
-    //             <img alt={option.name} src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png" className={`mr-2 flag flag-${option.code.toLowerCase()}`} style={{ width: '18px' }} />
-    //             <div>{option.name}</div>
-    //         </div>
-    //     );
-    // };
-    //
-    // const panelFooterTemplate = () => {
-    //     return (
-    //         <div className="py-2 px-3">
-    //             {selectedCurrency ? (
-    //                 <span>
-    //                     <b>{selectedCurrency.name}</b> selected.
-    //                 </span>
-    //             ) : (
-    //                 'Currency not selected.'
-    //             )}
-    //         </div>
-    //     );
-    // };
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const options = [
+        { label: '0,00000', icon: <FaBitcoin size="30" color="orange" /> },
+        { label: '0,00000', icon: <SiEthereum size="30" color="blueviolet" /> },
+        { label: '0,00000', icon: <SiLitecoin size="30" color="lightgrey"/> },
+    ];
+
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const handleOptionClick = (option) => {
+        setSelectedOption(option);
+        setIsOpen(false);
+    };
 
     return (
         <StyledNav>
@@ -93,43 +60,33 @@ export const MenuTop = () => {
                 <img className='logo-text' alt='' src={LogoTB} />
             </NavLink>
 
+            <div className={`dropdown ${isOpen ? 'isOpen' : ''}`}>
 
+                <button className="dropdown-toggle" onClick={toggleDropdown}>
+                    {selectedOption ? (
+                        <>
+                            <span className="option-icon">{selectedOption.icon}</span>
+                            {selectedOption.label}
+                        </>
+                    ) : (
+                        <>
+                            <span className="option-icon"><SiTether size="30" color="lightseagreen" /></span>
+                            0,00000
+                        </>
+                    )}
+                </button>
 
-        {/*    <header className="header-dropdown">*/}
-        {/*        <button className="menu-button" onClick={() => setOpen(!isOpen)}>*/}
-        {/*            <BsPersonCircle />*/}
-        {/*        </button>*/}
-        {/*        <nav className={`menu-dropdown ${isOpen ? "active" : ""}`} ref={menuRef}>*/}
-        {/*            <ul className="menu__list">*/}
-        {/*                <li className="menu__item">*/}
-        {/*                    <BsFillPersonFill className="icon" />*/}
-        {/*                    <span>Profile</span>*/}
-        {/*                </li>*/}
-        {/*                <li className="menu__item">*/}
-        {/*                    <BsGiftFill className="icon" />*/}
-        {/*                    <span>Bonus</span>*/}
-        {/*                </li>*/}
-        {/*                <li className="menu__item">*/}
-        {/*                    <BsFillBellFill className="icon" />*/}
-        {/*                    <span>Notify</span>*/}
-        {/*                </li>*/}
-        {/*                <li className="menu__item">*/}
-        {/*                    <BsGeoAltFill className="icon" />*/}
-        {/*                    <span>Location</span>*/}
-        {/*                </li>*/}
-        {/*                <li className="menu__item">*/}
-        {/*                    <BsFillGearFill className="icon" />*/}
-        {/*                    <span>Settings</span>*/}
-        {/*                </li>*/}
-        {/*                <li className="menu__item">*/}
-        {/*                    <BsBoxArrowRight className="icon" />*/}
-        {/*                    <span>Exit</span>*/}
-        {/*                </li>*/}
-        {/*            </ul>*/}
-        {/*        </nav>*/}
-        {/*    </header>*/}
-        {/*)*/}
-
+                {isOpen && (
+                    <ul className="dropdown-menu">
+                        {options.map((option, index) => (
+                            <li key={index} onClick={() => handleOptionClick(option)} className="dropdown-option">
+                                <span className="option-icon">{option.icon}</span>
+                                <span className="option-label">{option.label}</span>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
 
         </StyledNav>
 
