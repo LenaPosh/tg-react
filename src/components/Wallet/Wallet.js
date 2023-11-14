@@ -1,10 +1,14 @@
 import './style.css'
+import { SiWalletconnect } from "react-icons/si";
 
 export const AppWallet= () => {
     return (
         <div className="header">
             <button className="rounded-button">
-                Click me
+                <div className='wallet-icon'>
+                    <SiWalletconnect size='20'/> WalletConnect
+                </div>
+
             </button>
         </div>
 

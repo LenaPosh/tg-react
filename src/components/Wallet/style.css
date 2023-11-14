@@ -15,3 +15,11 @@
     left: 20px;
     z-index: 999;
 }
+
+.wallet-icon {
+    margin-right: 10px; /* Отступ между иконкой и текстом */
+    font-size: 20px;
+    display: inline-flex; /* Используем inline-flex для выравнивания элементов внутри контейнера */
+    align-items: center; /* Выравниваем элементы по вертикали */
+    justify-content: center; /* Выравниваем элементы по горизонтали */
+}
