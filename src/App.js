@@ -8,6 +8,7 @@ function App() {
 
     useEffect( () => {
         tg.ready();
+        tg.expand();
     }, [])
 
     const onClose = () => {
