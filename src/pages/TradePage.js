@@ -6,9 +6,11 @@ export const TradePage = () => {
         <>
             <MenuTop/>
             <h1>Page trade</h1>
+            <h1>Page trade</h1>
             <AppFooter/>
-
         </>
+
+
 
     )
 }
