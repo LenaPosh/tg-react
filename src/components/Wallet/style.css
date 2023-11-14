@@ -1,0 +1,17 @@
+
+
+.rounded-button {
+    width: calc(100% - 40px); /* учитывая отступы по 20px с обеих сторон */
+    margin: 0;
+    padding: 10px !important;
+    border: none;
+    border-radius: 8px;
+    background-color: #0a9d98;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    position: fixed;
+    top: 120px;
+    left: 20px;
+    z-index: 999;
+}

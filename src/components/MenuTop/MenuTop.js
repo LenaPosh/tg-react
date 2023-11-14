@@ -7,7 +7,7 @@ import { SiTether } from "react-icons/si";
 import { SiEthereum } from "react-icons/si";
 import { SiLitecoin } from "react-icons/si";
 import { FaBitcoin } from "react-icons/fa";
-import {useTelegram} from "../../hooks/useTelegram";
+
 
 
 
@@ -48,8 +48,7 @@ export const MenuTop = () => {
         setIsOpen(false);
     };
 
-    // const tg = window.Telegram.WebApp;
-    const {user} = useTelegram();
+    const tg = window.Telegram.WebApp;
 
     return (
         <StyledNav>
@@ -87,7 +86,7 @@ export const MenuTop = () => {
             </div>
 
             <span className={'username'}>
-                {user?.username}
+                {tg.initDataUnsafe?.user?.username}
             </span>
 
 

@@ -2,8 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 import './style.css'
-import {AiOutlineMenu, AiOutlineHome, AiOutlineRise, AiOutlineWallet} from 'react-icons/ai';
-
+import { FaWallet } from "react-icons/fa";
+import { TiChartBarOutline } from "react-icons/ti";
+import { ImHome } from "react-icons/im";
+import { RiMenu2Line } from "react-icons/ri";
 export const Screen = styled.div`
     min-height: 100vh;
 `
@@ -28,30 +30,30 @@ export const AppFooter = () => {
                 <div className='menu-navigation'>
                     <div className='menu-items'>
 
-                        <NavLink to="/menu" className='menu'>
+                        <NavLink to="/menu" className='menu-item'>
                             <div className='menu-icon'>
-                                <AiOutlineMenu />
+                                <RiMenu2Line />
                             </div>
                             <div className='menu-text'>MENU</div>
                         </NavLink>
 
-                        <NavLink to="/home" className='home'>
+                        <NavLink to="/home" className='menu-item' activeClassName="active">
                             <div className='menu-icon'>
-                                <AiOutlineHome/>
+                                <ImHome/>
                             </div>
                             <div className='menu-text'>HOME</div>
 
                         </NavLink>
-                        <NavLink to="/trade" className='trade'>
+                        <NavLink to="/trade" className='menu-item'>
                             <div className='menu-icon'>
-                                <AiOutlineRise/>
+                                <TiChartBarOutline/>
                             </div>
                             <div className='menu-text'>TRADE</div>
                         </NavLink>
 
-                        <NavLink to="/wallet" className='wallet'>
+                        <NavLink to="/wallet" className='menu-item'>
                             <div className='menu-icon'>
-                                <AiOutlineWallet/>
+                                <FaWallet/>
                             </div>
                             <div className='menu-text'>WALLET</div>
 
