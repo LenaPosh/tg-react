@@ -11,9 +11,7 @@ function App() {
         tg.expand();
     }, [])
 
-    const onClose = () => {
-        tg.close()
-    }
+
   return (
       <>
           <RouterProvider router={router}/>

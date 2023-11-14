@@ -7,6 +7,7 @@ import { SiTether } from "react-icons/si";
 import { SiEthereum } from "react-icons/si";
 import { SiLitecoin } from "react-icons/si";
 import { FaBitcoin } from "react-icons/fa";
+import {useTelegram} from "../../hooks/useTelegram";
 
 
 
@@ -27,12 +28,6 @@ const StyledNav = styled.nav`
   right: 0;
   width: 100vw;
   `
-// const Button = styled.button`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//
-// `
 
 export const MenuTop = () => {
     const [selectedOption, setSelectedOption] = useState(null);
@@ -52,6 +47,9 @@ export const MenuTop = () => {
         setSelectedOption(option);
         setIsOpen(false);
     };
+
+    // const tg = window.Telegram.WebApp;
+    const {user} = useTelegram();
 
     return (
         <StyledNav>
@@ -87,6 +85,11 @@ export const MenuTop = () => {
                     </ul>
                 )}
             </div>
+
+            <span className={'username'}>
+                {user?.username}
+            </span>
+
 
         </StyledNav>
 

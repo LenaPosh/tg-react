@@ -137,10 +137,10 @@
     border-radius: 7px;
     cursor: pointer;
     display: flex;
-    /*align-items: center;*/
-    /*justify-content: center;*/
-    margin-right: 800px;
-    width: 200px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 820px;
+    width: 180px;
     font-size: 20px;
 
 }
@@ -161,11 +161,11 @@
 .dropdown-menu li {
     padding: 10px;
     cursor: pointer;
-    width: 180px;
+    width: 160px;
 }
 
 .dropdown-menu li:hover {
-    background-color: #f1f1f1;
+    background-color: slategrey;
 }
 
 .dropdown.isOpen .dropdown-menu {
@@ -191,7 +191,7 @@
 .option-icon {
     margin-right: 10px;
     font-size: 20px;
-    /*color: lightgrey;*/
+
 
 }
 
