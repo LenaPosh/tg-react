@@ -1,8 +1,9 @@
 .header-wallet {
-    /*padding: 40px 0;*/
+    padding: 40px 0;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     margin: 0;
 
@@ -18,7 +19,7 @@
 
 .rounded-button {
     width: calc(100% - 40px);
-    margin: 0;
+    margin: 0 auto;
     padding: 10px !important;
     border: none;
     border-radius: 8px;
@@ -26,9 +27,6 @@
     color: #fff;
     cursor: pointer;
     font-size: 18px;
-    position: fixed;
-    top: 120px;
-    left: 20px;
     z-index: 10;
 }
 
@@ -40,20 +38,20 @@
     justify-content: center;
 }
 .tabs {
-    position: fixed;
+    /*width: 100vh;*/
     top: 180px;
     left: 20px;
     display: flex;
     margin-bottom: 10px;
-    z-index: 1001;
-    width: calc(100% - 40px)
+    z-index: 10;
+    /*width: calc(100% - 40px)*/
 }
 
 .tab {
-    flex-grow: 1;
+    flex-grow: 0;
+    flex-shrink: 1;
     padding: 10px;
     cursor: pointer;
-    /*border: 1px solid #ccc;*/
     border-radius: 5px 5px 0 0;
     margin-right: 5px;
     background-color: transparent;
@@ -61,7 +59,6 @@
     color: slategrey;
     font-size: 18px;
     white-space: nowrap;
-    width: calc(100% - 40px)
 
 }
 
@@ -71,10 +68,10 @@
 }
 
 .tabs .tab:last-child {
-    margin-left: 40vw;
-    width: 100vw;
     text-decoration: underline;
     color: white;
+    flex-grow: 1;
+    text-align: right;
 
 }
 
@@ -89,32 +86,15 @@
 
 }
 
-/*.tab-content {*/
-/*    width: calc(100% - 40px);*/
-/*    !*padding: 10px;*!*/
-/*    border: none;*/
-/*    border-radius: 0;*/
-/*    position: fixed;*/
-/*    top: 220px;*/
-/*    !*align-items: center;*!*/
-/*    justify-content: center;*/
-/*    font-size: 17px;*/
-
-/*    display: flex;*/
-/*}*/
 .tab-content {
-    width: calc(100% - 40px);
+    width: 100%;
     margin: 0;
-    padding: 10px !important;
     border: none;
     border-radius: 8px;
     color: #4d5762;
     cursor: pointer;
     font-size: 18px;
-    position: fixed;
-    top: 220px;
-    left: -400px;
-    z-index: 10;
+
 }
 
 
