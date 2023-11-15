@@ -37,7 +37,7 @@ export const AppFooter = () => {
                             <div className='menu-text'>MENU</div>
                         </NavLink>
 
-                        <NavLink to="/home" className='menu-item' activeClassName="active">
+                        <NavLink to="/home" className='menu-item'>
                             <div className='menu-icon'>
                                 <ImHome/>
                             </div>

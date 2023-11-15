@@ -3,7 +3,7 @@ import { SiWalletconnect } from "react-icons/si";
 
 export const AppWallet= () => {
     return (
-        <div className="header">
+        <div className="header-wallet">
             <button className="rounded-button">
                 <div className='wallet-icon'>
                     <SiWalletconnect size='20'/> WalletConnect
@@ -11,9 +11,5 @@ export const AppWallet= () => {
 
             </button>
         </div>
-
-
-
-
     )
 }
