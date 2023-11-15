@@ -88,14 +88,32 @@
 
 .tab-content {
     width: 100%;
-    margin: 0;
+    /*margin: 0;*/
     border: none;
     border-radius: 8px;
     color: #4d5762;
     cursor: pointer;
     font-size: 18px;
+    margin-bottom: 10px;
 
 }
+
+.dropdown-toggle-wallet {
+    padding: 10px;
+    background-color: #3f3e3e;
+    color: #fff;
+    border: 1px solid #1f1f1f;
+    border-radius: 7px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*margin-right: 820px;*/
+    width: 92vw;
+    font-size: 20px;
+
+}
+
 
 
 

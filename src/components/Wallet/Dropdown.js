@@ -1,35 +1,9 @@
-import styled from "styled-components";
-import {NavLink} from "react-router-dom";
-import LogoTB from "../../img/Free_Sample_By_Wix.jpg"
-import './style.css'
 import {useState} from "react";
-import { SiTether } from "react-icons/si";
-import { SiEthereum } from "react-icons/si";
-import { SiLitecoin } from "react-icons/si";
-import { FaBitcoin } from "react-icons/fa";
+import {FaBitcoin} from "react-icons/fa";
+import {SiEthereum, SiLitecoin, SiTether} from "react-icons/si";
 
 
-
-
-
-export const StyledNav = styled.nav`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px 0;
-  background-color: #2c2c2c;
-  color: #fff;
-  height: 50px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100vw;
-  z-index: 20;
-  `
-
-export const MenuTop = () => {
+export const DropdownWallet = () => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -48,18 +22,11 @@ export const MenuTop = () => {
         setIsOpen(false);
     };
 
-    const tg = window.Telegram.WebApp;
-
     return (
-        <StyledNav>
-
-            <NavLink to="/">
-                <img className='logo-text' alt='' src={LogoTB} />
-            </NavLink>
-
+        <>
             <div className={`dropdown ${isOpen ? 'isOpen' : ''}`}>
 
-                <button className="dropdown-toggle" onClick={toggleDropdown}>
+                <button className="dropdown-toggle-wallet" onClick={toggleDropdown}>
                     {selectedOption ? (
                         <>
                             <span className="option-icon">{selectedOption.icon}</span>
@@ -85,14 +52,9 @@ export const MenuTop = () => {
                 )}
             </div>
 
-            <span className={'username'}>
-                {tg.initDataUnsafe?.user?.username}
-            </span>
 
-
-        </StyledNav>
+        </>
 
 
     )
 }
-

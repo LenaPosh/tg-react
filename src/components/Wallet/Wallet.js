@@ -1,6 +1,7 @@
 import './style.css'
 import { SiWalletconnect } from "react-icons/si";
 import Tabs from "./Tab";
+import {DropdownWallet} from "./Dropdown";
 
 export const AppWallet= () => {
     const tabs = [
@@ -28,6 +29,7 @@ export const AppWallet= () => {
             <div>
                 <Tabs tabs={tabs} />
             </div>
+            <DropdownWallet/>
         </div>
     )
 }
