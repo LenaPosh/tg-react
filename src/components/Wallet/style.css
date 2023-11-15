@@ -29,6 +29,7 @@
     position: fixed;
     top: 120px;
     left: 20px;
+    z-index: 10;
 }
 
 .wallet-icon {
@@ -38,3 +39,63 @@
     align-items: center;
     justify-content: center;
 }
+.tabs {
+    position: fixed;
+    top: 180px;
+    left: 20px;
+    display: flex;
+    margin-bottom: 10px;
+    z-index: 1001;
+}
+
+.tab {
+    flex-grow: 1;
+    padding: 10px;
+    cursor: pointer;
+    /*border: 1px solid #ccc;*/
+    border-radius: 5px 5px 0 0;
+    margin-right: 5px;
+    background-color: transparent;
+    border: none;
+    color: slategrey;
+    font-size: 18px;
+    white-space: nowrap;
+
+}
+
+.tabs .tab:not(:last-child) {
+    margin-right: 30px;
+}
+
+.tabs .tab:last-child {
+    /*margin-left: 40vw;*/
+    width: 100vw;
+    text-decoration: underline;
+    color: white;
+}
+
+.tab:hover {
+    color: #727070;
+    /*background-color: #c1d8ef;*/
+}
+
+.tab.active {
+    color: #cccccc;
+    /*background-color: #c1d8ef;*/
+
+}
+
+.tab-content {
+    width: 100vh !important;
+    /*padding: 10px;*/
+    border: none;
+    border-radius: 0;
+    position: fixed;
+    top: 220px;
+    /*align-items: center;*/
+    justify-content: center;
+    font-size: 17px;
+
+    display: flex;
+}
+
