@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './style.css';
+import { Link } from 'react-router-dom';
+import './style.css'; // Подключаем внешний файл стилей
 
 const Tabs = ({ tabs }) => {
     const [activeTab, setActiveTab] = useState(0);
@@ -17,7 +18,7 @@ const Tabs = ({ tabs }) => {
                         className={`tab ${index === activeTab ? 'active' : ''}`}
                         onClick={() => handleTabClick(index)}
                     >
-                        {tab.label}
+                        <Link to={tab.link}>{tab.label}</Link>
                     </div>
                 ))}
             </div>

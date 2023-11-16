@@ -24,7 +24,7 @@ export const DropdownWallet = () => {
 
     return (
         <>
-            <div className={`dropdown ${isOpen ? 'isOpen' : ''}`}>
+            <div className={`dropdown-wallet ${isOpen ? 'isOpen' : ''}`}>
 
                 <button className="dropdown-toggle-wallet" onClick={toggleDropdown}>
                     {selectedOption ? (
@@ -34,18 +34,18 @@ export const DropdownWallet = () => {
                         </>
                     ) : (
                         <>
-                            <span className="option-icon"><SiTether size="30" color="lightseagreen" /></span>
+                            <span className="option-icon-wallet"><SiTether size="30" color="lightseagreen" /></span>
                             0,00000
                         </>
                     )}
                 </button>
 
                 {isOpen && (
-                    <ul className="dropdown-menu">
+                    <ul className="dropdown-menu-wallet">
                         {options.map((option, index) => (
                             <li key={index} onClick={() => handleOptionClick(option)} className="dropdown-option">
-                                <span className="option-icon">{option.icon}</span>
-                                <span className="option-label">{option.label}</span>
+                                <span className="option-icon-wallet">{option.icon}</span>
+                                <span className="option-label-wallet">{option.label}</span>
                             </li>
                         ))}
                     </ul>
