@@ -30,3 +30,27 @@
     height: 30px;
 }
 
+
+
+/* Дополнения для стилей QR-кода */
+.qr-code {
+    margin-top: 20px; /* или другое значение, в зависимости от вашего дизайна */
+    max-width: 100%;
+    height: auto;
+}
+
+/* Стили для обертки QR-кода */
+.qr-code-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Стили для текста под QR-кодом (если необходимо) */
+.qr-code-text {
+    margin-top: 10px;
+    color: #cccccc;
+    font-size: 16px;
+}
+
+
