@@ -7,6 +7,9 @@ import { SiTether } from "react-icons/si";
 import { SiEthereum } from "react-icons/si";
 import { SiLitecoin } from "react-icons/si";
 import { FaBitcoin } from "react-icons/fa";
+import {I18nextProvider} from "react-i18next";
+import i18n from '../../i18n/ i18n';
+import {LanguageSelector} from "../../i18n/LanguageSelector";
 
 
 
@@ -48,46 +51,47 @@ export const MenuTop = () => {
         setIsOpen(false);
     };
 
-    const tg = window.Telegram.WebApp;
+    // const tg = window.Telegram.WebApp;
 
     return (
         <StyledNav>
+            <I18nextProvider i18n={i18n}>
+                    <NavLink to="/">
+                        <img className='logo-text' alt='' src={LogoTB} />
+                    </NavLink>
 
-            <NavLink to="/">
-                <img className='logo-text' alt='' src={LogoTB} />
-            </NavLink>
+                    <div className={`dropdown ${isOpen ? 'isOpen' : ''}`}>
 
-            <div className={`dropdown ${isOpen ? 'isOpen' : ''}`}>
+                        <button className="dropdown-toggle" onClick={toggleDropdown}>
+                            {selectedOption ? (
+                                <>
+                                    <span className="option-icon">{selectedOption.icon}</span>
+                                    {selectedOption.label}
+                                </>
+                            ) : (
+                                <>
+                                    <span className="option-icon"><SiTether size="30" color="lightseagreen" /></span>
+                                    0,00000
+                                </>
+                            )}
+                        </button>
 
-                <button className="dropdown-toggle" onClick={toggleDropdown}>
-                    {selectedOption ? (
-                        <>
-                            <span className="option-icon">{selectedOption.icon}</span>
-                            {selectedOption.label}
-                        </>
-                    ) : (
-                        <>
-                            <span className="option-icon"><SiTether size="30" color="lightseagreen" /></span>
-                            0,00000
-                        </>
-                    )}
-                </button>
+                        {isOpen && (
+                            <ul className="dropdown-menu">
+                                {options.map((option, index) => (
+                                    <li key={index} onClick={() => handleOptionClick(option)} className="dropdown-option">
+                                        <span className="option-icon">{option.icon}</span>
+                                        <span className="option-label">{option.label}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                    <LanguageSelector />
 
-                {isOpen && (
-                    <ul className="dropdown-menu">
-                        {options.map((option, index) => (
-                            <li key={index} onClick={() => handleOptionClick(option)} className="dropdown-option">
-                                <span className="option-icon">{option.icon}</span>
-                                <span className="option-label">{option.label}</span>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>
+            </I18nextProvider>
 
-            <span className={'username'}>
-                {tg.initDataUnsafe?.user?.username}
-            </span>
+
 
 
         </StyledNav>
