@@ -117,18 +117,31 @@
 }
 
 
+/*.dropdown-toggle-wallet {*/
+/*    padding: 10px;*/
+/*    background-color: #565454;*/
+/*    color: #fff;*/
+/*    border: 1px solid #1f1f1f;*/
+/*    border-radius: 7px;*/
+/*    cursor: pointer;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    !*margin-right: 820px;*!*/
+/*    width: 92vw;*/
+/*    font-size: 20px;*/
+/*}*/
 .dropdown-toggle-wallet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 92vw;
     padding: 10px;
     background-color: #565454;
     color: #fff;
     border: 1px solid #1f1f1f;
     border-radius: 7px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /*margin-right: 820px;*/
-    width: 92vw;
     font-size: 20px;
 }
 .dropdown-menu-wallet {
@@ -161,11 +174,11 @@
     position: absolute;
     width: 100%;
 }
-.dropdown-toggle-wallet::after {
-    content: '\25BC';
-    margin-left: 10px;
-    color: #fff;
-}
+/*.dropdown-toggle-wallet::after {*/
+/*    content: '\25BC';*/
+/*    margin-left: 10px;*/
+/*    color: #fff;*/
+/*}*/
 
 
 .dropdown-option-wallet {
@@ -185,7 +198,16 @@
     color: #fff
 }
 
+.option-info {
+    display: flex;
+    align-items: center;
+}
+.option-icon {
+    margin-right: 10px;
+}
 
-
+.arrow-icon {
+    font-size: 20px;
+}
 
 

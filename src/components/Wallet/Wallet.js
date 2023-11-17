@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './style.css';
 import { SiWalletconnect } from 'react-icons/si';
 import Tabs from './Tab';
-import { DropdownWallet } from './Dropdown';
+import { DropdownWallet } from './DropdownDeposit';
 import CopyableAddress from './PaymentButton';
 import QRCode from 'qrcode.react';
 
