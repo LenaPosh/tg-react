@@ -15,6 +15,7 @@
     background-color: rgba(80, 79, 79, 0.1);
     color: white;
     height: 30px;
+    width: 86vw;
 }
 
 .copy-button {
@@ -43,6 +44,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 92vw;
 }
 
 .qr-code-text {
