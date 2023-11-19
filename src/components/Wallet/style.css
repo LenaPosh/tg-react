@@ -234,7 +234,7 @@ input {
 }
 
 .input-container input {
-    width: 90vw;
+    width: 88vw;
 }
 
 .deposit-label {
@@ -261,9 +261,9 @@ input {
 }
 
 .double-input-container label {
-    /*margin-bottom: 5px;*/
-    color: #ffffff;
-    font-size: 16px;
+    font-size: 18px;
+    color: #4d5762;
+    margin-bottom: 0;
 }
 
 .double-input {
@@ -279,7 +279,7 @@ input {
     color: #ffffff;
     background-color: #565454;
     outline: none;
-    width: 90vw;
+    width: 88vw;
 }
 
 .double-input .max-label {
@@ -289,9 +289,26 @@ input {
     transform: translateY(-50%);
     cursor: pointer;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 18px;
 }
 
-.double-input .max-label:hover {
-    background-color: #3f3e3e;
+.double-input input.amount-input::placeholder {
+    color: #4d5762;
 }
+
+.double-input input.amount-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #565454;
+    border-radius: 7px;
+    font-size: 20px;
+    color: #727070;
+    background-color: #565454;
+    outline: none;
+    width: 88vw;
+}
+
+.double-input input.amount-input[value="0.0000000"] {
+    color: #ffffff;
+}
+
