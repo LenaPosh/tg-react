@@ -5,17 +5,35 @@ import Tabs from './Tab';
 import { DropdownWallet } from './DropdownDeposit';
 import CopyableAddress from './PaymentButton';
 import QRCode from 'qrcode.react';
-import {DropdownWithdraw} from "./DropdownWithdraw";
+import { DropdownWithdraw } from "./DropdownWithdraw";
 import TextInputWithLabel from "./InputWithdraw";
 import DoubleInputWithLabel from "./DoubleInputWithLabel";
+import ButtonWithdraw from "./ButtonWithdraw";
 
 export const AppWallet = () => {
     const paymentAddress = '0x97d03eF9Ffe1Ac3Cb2ADa6D20C71d139245bdd7b';
     const [qrCodeValue, setQRCodeValue] = useState('');
+    const [selectedToken, setSelectedToken] = useState({ value: 'BTC', label: '0.000000000000', minAmount: '0.0002' });
+    const [inputValue1, setInputValue1] = useState('');
+    const [inputValue2, setInputValue2] = useState('');
 
     useEffect(() => {
         setQRCodeValue(paymentAddress);
     }, [paymentAddress]);
+
+    const handleTokenChange = (value, label, minAmount) => {
+        setSelectedToken({ value, label, minAmount });
+    };
+
+    const handleInputChange1 = (event) => {
+        setInputValue1(event.target.value);
+    };
+
+    const handleInputChange2 = (event) => {
+        setInputValue2(event.target.value);
+    };
+
+    const isButtonActive = inputValue1 !== '' && inputValue2 !== '';
 
     const tabs = [
         {
@@ -24,12 +42,12 @@ export const AppWallet = () => {
                 <div className="tab-content">
                     <div className="input-container">
                         <label className="myInput">Select the token to deposit (Min 0.0001BTC)</label>
-                        <DropdownWallet/>
+                        <DropdownWallet />
                     </div>
-                    <CopyableAddress address={paymentAddress}/>
+                    <CopyableAddress address={paymentAddress} />
                     <div className="qr-code-container">
-                        <QRCode value={qrCodeValue} className="qr-code"/>
-                        <p className="qr-code-text">Send only BTC to this deposit address. <br/> Values sent below the
+                        <QRCode value={qrCodeValue} className="qr-code" />
+                        <p className="qr-code-text">Send only {selectedToken.value} to this deposit address. <br /> Values sent below the
                             minimum amount or to an incorrect address will be lost.</p>
                     </div>
                 </div>
@@ -38,16 +56,20 @@ export const AppWallet = () => {
 
         {
             label: 'Withdraw',
-            content: <div className="tab-content">
-                <label className="deposit-label">Select the token to deposit (Min 0.0002BTC)</label>
-                <div className="content-container">
-                    <DropdownWithdraw />
-                    <TextInputWithLabel />
-                    <DoubleInputWithLabel/>
+            content: (
+                <div className="tab-content">
+                    <label className="deposit-label">Select the token to withdraw (Min {selectedToken.minAmount}{selectedToken.value})</label>
+                    <div className="content-container">
+                        <DropdownWithdraw onTokenChange={handleTokenChange} />
+                        <TextInputWithLabel value={inputValue1} onChange={handleInputChange1} label="Input 1" />
+                        <DoubleInputWithLabel />
+                        <ButtonWithdraw onClick={() => console.log('Button clicked')} isButtonActive={isButtonActive} />
+                        <p className='text-after-button-withdraw'>Requesting a withdrawal will mean that you forget all bonus funds. </p>
+                    </div>
                 </div>
-            </div>
-
+            )
         },
+
         {
             label: 'Buy Crypto',
             content: <div>Content for Tab 3</div>,
