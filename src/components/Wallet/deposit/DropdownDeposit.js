@@ -19,9 +19,9 @@ export const DropdownDeposit = ({ onTokenChange, updateDepositText }) => {
 
     const usdtDefaultOption = usdtOptions[0];
 
-    const [selectedOption, setSelectedOption] = useState(options[3]); // Начальное значение USDT
+    const [selectedOption, setSelectedOption] = useState(options[0]);
     const [isOpen, setIsOpen] = useState(false);
-    const [isUSDTSelected, setIsUSDTSelected] = useState(true);
+    const [isUSDTSelected, setIsUSDTSelected] = useState(false);
     const [selectedUSDTNetwork, setSelectedUSDTNetwork] = useState(usdtDefaultOption.network);
 
     useEffect(() => {
@@ -60,7 +60,7 @@ export const DropdownDeposit = ({ onTokenChange, updateDepositText }) => {
             </button>
             {isOpen && (
                 <ul className="dropdown-menu-wallet">
-                    {options.map((option, index) => (
+                    {options.filter(option => option.value !== selectedOption.value).map((option, index) => (
                         <li key={index} onClick={() => handleOptionClick(option)} className={`dropdown-option ${option.value === selectedOption.value ? 'active' : ''}`}>
                             <span className="option-icon">{option.icon}</span>
                             <span className="option-label">{option.label}</span>
@@ -86,4 +86,5 @@ export const DropdownDeposit = ({ onTokenChange, updateDepositText }) => {
         </div>
     );
 };
+
 
