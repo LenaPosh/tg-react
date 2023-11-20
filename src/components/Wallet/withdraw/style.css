@@ -1,0 +1,131 @@
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+label {
+    margin-top: 20px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #565454;
+    border-radius: 7px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #565454;
+    outline: none;
+}
+
+.input-container input {
+    width: 88vw;
+}
+
+.deposit-label {
+    font-size: 18px;
+    color: #4d5762;
+    margin-bottom: 0;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+
+
+
+
+
+.double-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+.double-input-container label {
+    font-size: 18px;
+    color: #4d5762;
+    margin-bottom: 0;
+}
+
+.double-input {
+    position: relative;
+}
+
+.double-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #565454;
+    border-radius: 7px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #565454;
+    outline: none;
+    width: 88vw;
+}
+
+.double-input .max-label {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.double-input input.amount-input::placeholder {
+    color: #727070;
+}
+
+.double-input input.amount-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #565454;
+    border-radius: 7px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #565454;
+    outline: none;
+    width: 88vw;
+}
+
+.double-input input.amount-input::placeholder {
+    color: #727070;
+}
+
+.double-input input.amount-input:not(:placeholder-shown) {
+    color: #ffffff;
+}
+
+.double-input input.amount-input[value="0.0000000"] {
+    color: #ffffff;
+}
+
+
+
+
+.button-withdraw {
+    padding: 10px;
+    border: 1px solid #565454;
+    border-radius: 15px;
+    font-size: 20px;
+    color: #c1d8ef;
+    background-color: slategrey;
+    outline: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    transition: background-color 0.3s ease;
+}
+
+.button-withdraw:hover {
+    background-color: darkslategrey;
+}

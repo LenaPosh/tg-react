@@ -1,0 +1,81 @@
+.dropdown-wallet {
+    z-index: 10;
+    position: relative;
+}
+
+
+.dropdown-toggle-wallet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 92vw;
+    padding: 10px;
+    background-color: #565454;
+    color: #fff;
+    border: 1px solid #1f1f1f;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 20px;
+
+}
+.dropdown-menu-wallet {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    position: absolute;
+    background-color: #3f3e3e;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    border-radius: 7px;
+    font-size: 20px;
+    width: 100%;
+    left: 0;
+}
+.dropdown-menu-wallet li {
+    padding: 10px;
+    cursor: pointer;
+
+    /*z-index: 800;*/
+}
+.dropdown-menu-wallet li:hover {
+    background-color: slategrey;
+}
+
+.dropdown-wallet.isOpen .dropdown-menu-wallet {
+    display: inline-block;
+    z-index: 1000;
+    position: absolute;
+    width: 100%;
+}
+
+.dropdown-option-wallet {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    z-index: 1100;
+}
+
+.option-icon-wallet {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.option-label-wallet {
+    color: #fff
+}
+
+.option-info {
+    display: flex;
+    align-items: center;
+}
+.option-icon {
+    margin-right: 10px;
+}
+
+.arrow-icon {
+    font-size: 20px;
+    margin-right: 20px;
+}

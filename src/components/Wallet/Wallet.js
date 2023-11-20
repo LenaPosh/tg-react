@@ -1,14 +1,14 @@
+import {DropdownDeposit} from "./deposit/DropdownDeposit";
 import React, { useState, useEffect } from 'react';
 import './style.css';
 import { SiWalletconnect } from 'react-icons/si';
-import Tabs from './Tab';
-import { DropdownWallet } from './DropdownDeposit';
-import CopyableAddress from './PaymentButton';
+import Tabs from './tabs/Tab';
+import CopyableAddress from './deposit/PaymentButton';
 import QRCode from 'qrcode.react';
-import { DropdownWithdraw } from "./DropdownWithdraw";
-import TextInputWithLabel from "./InputWithdraw";
-import DoubleInputWithLabel from "./DoubleInputWithLabel";
-import ButtonWithdraw from "./ButtonWithdraw";
+import { DropdownWithdraw } from "./withdraw/DropdownWithdraw";
+import TextInputWithLabel from "./withdraw/InputWithdraw";
+import DoubleInputWithLabel from "./withdraw/DoubleInputWithLabel";
+import ButtonWithdraw from "./withdraw/ButtonWithdraw";
 
 export const AppWallet = () => {
     const paymentAddress = '0x97d03eF9Ffe1Ac3Cb2ADa6D20C71d139245bdd7b';
@@ -16,6 +16,7 @@ export const AppWallet = () => {
     const [selectedToken, setSelectedToken] = useState({ value: 'BTC', label: '0.000000000000', minAmount: '0.0002' });
     const [inputValue1, setInputValue1] = useState('');
     const [inputValue2, setInputValue2] = useState('');
+    const [depositLabelText, setDepositLabelText] = useState('Select the token to deposit (Min 0.0001BTC)');
 
     useEffect(() => {
         setQRCodeValue(paymentAddress);
@@ -35,14 +36,18 @@ export const AppWallet = () => {
 
     const isButtonActive = inputValue1 !== '' && inputValue2 !== '';
 
+    const updateDepositText = (text) => {
+        setDepositLabelText(text);
+    };
+
     const tabs = [
         {
             label: 'Deposit',
             content: (
                 <div className="tab-content">
                     <div className="input-container">
-                        <label className="myInput">Select the token to deposit (Min 0.0001BTC)</label>
-                        <DropdownWallet />
+                        <label className="deposit-label">{depositLabelText}</label>
+                        <DropdownDeposit onTokenChange={handleTokenChange} updateDepositText={updateDepositText} />
                     </div>
                     <CopyableAddress address={paymentAddress} />
                     <div className="qr-code-container">
@@ -53,6 +58,7 @@ export const AppWallet = () => {
                 </div>
             )
         },
+
 
         {
             label: 'Withdraw',

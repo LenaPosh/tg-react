@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './style.css'; // Подключаем внешний файл стилей
+import './style.css';
 
 const Tabs = ({ tabs }) => {
     const [activeTab, setActiveTab] = useState(0);
