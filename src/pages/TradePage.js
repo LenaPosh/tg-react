@@ -1,12 +1,12 @@
 import {MenuTop} from "../components/MenuTop/MenuTop";
 import {AppFooter} from "../components/Footer/Footer";
+import {MyGraph} from "../components/Traid/Traid";
 
 export const TradePage = () => {
     return (
         <>
             <MenuTop/>
-            <h1>Page trade</h1>
-            <h1>Page trade</h1>
+            <MyGraph/>
             <AppFooter/>
         </>
 

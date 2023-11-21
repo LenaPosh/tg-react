@@ -25,11 +25,13 @@ export const DropdownDeposit = ({ onTokenChange, updateDepositText }) => {
     const [selectedUSDTNetwork, setSelectedUSDTNetwork] = useState(usdtDefaultOption.network);
 
     useEffect(() => {
-        const selectedMinAmount = isUSDTSelected
+        let displayMinAmount = isUSDTSelected
             ? usdtOptions.find(option => option.network === selectedUSDTNetwork)?.minAmount
             : selectedOption.minAmount;
 
-        updateDepositText(`Select the token to deposit (Min ${selectedMinAmount} ${isUSDTSelected ? 'USDT' : selectedOption.label})`);
+        displayMinAmount = selectedOption.value === 'WALLETCONNECT' ? '0.01 ETH' : displayMinAmount;
+
+        updateDepositText(`Select the token to deposit (Min ${displayMinAmount} ${selectedOption.value === 'WALLETCONNECT' ? 'ETH' : isUSDTSelected ? 'USDT' : selectedOption.label})`);
     }, [selectedOption, selectedUSDTNetwork, isUSDTSelected, updateDepositText]);
 
     const toggleDropdown = () => {
