@@ -130,3 +130,9 @@ input {
 .button-withdraw:hover {
     background-color: darkslategrey;
 }
+
+.text-after-button-withdraw {
+    text-align: center;
+    margin: auto;
+    display: table;
+}

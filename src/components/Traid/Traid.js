@@ -26,7 +26,8 @@ export const MyGraph = () => {
         chart.timeScale().fitContent();
     }, []);
 
-    return <div id="container" style={{ height: '400px' }}></div>;
+    return <div id="container" style={{ height: '400px', backgroundColor: '#2c2c2c' }}></div>;
+
 };
 
 

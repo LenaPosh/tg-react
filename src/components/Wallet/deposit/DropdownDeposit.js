@@ -4,6 +4,7 @@ import { SiEthereum, SiLitecoin, SiTether, SiWalletconnect } from "react-icons/s
 import './style.css';
 
 export const DropdownDeposit = ({ onTokenChange, updateDepositText }) => {
+
     const options = [
         { label: 'BTC', value: 'BTC', minAmount: '0.0002', icon: <FaBitcoin size="30" color="orange" /> },
         { label: 'ETH', value: 'ETH', minAmount: '0.01', icon: <SiEthereum size="30" color="blueviolet" /> },

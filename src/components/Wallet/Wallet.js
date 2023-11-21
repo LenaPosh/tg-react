@@ -25,6 +25,9 @@ export const AppWallet = () => {
     const handleTokenChange = (value, label, minAmount) => {
         setSelectedToken({ value, label, minAmount });
     };
+    const handleTokenChangeWithdraw = (value, label, minAmount) => {
+        setSelectedToken({ value, label, minAmount });
+    };
 
     const handleInputChange1 = (event) => {
         setInputValue1(event.target.value);
@@ -37,6 +40,10 @@ export const AppWallet = () => {
     const isButtonActive = inputValue1 !== '' && inputValue2 !== '';
 
     const updateDepositText = (text) => {
+        setDepositLabelText(text);
+    };
+
+    const updateDepositText2 = (text) => {
         setDepositLabelText(text);
     };
 
@@ -64,9 +71,9 @@ export const AppWallet = () => {
             label: 'Withdraw',
             content: (
                 <div className="tab-content">
-                    <label className="deposit-label">Select the token to withdraw (Min {selectedToken.minAmount}{selectedToken.value})</label>
+                    <label className="deposit-label">{depositLabelText}</label>
                     <div className="content-container">
-                        <DropdownWithdraw onTokenChange={handleTokenChange} />
+                        <DropdownWithdraw onTokenChangeWithdraw={handleTokenChangeWithdraw} updateDepositText2={updateDepositText2} />
                         <TextInputWithLabel value={inputValue1} onChange={handleInputChange1} label="Input 1" />
                         <DoubleInputWithLabel />
                         <ButtonWithdraw onClick={() => console.log('Button clicked')} isButtonActive={isButtonActive} />
