@@ -1,0 +1,99 @@
+.header-wallet-buy {
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+
+    background-color: rgba(0, 0, 0, 0.89);
+    background-image: url('header-bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    color: rgba(255, 255, 255, 0.6);
+    text-align: left;
+}
+
+
+h3 {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+.header-wallet-buy p {
+    color: #fff;
+    margin-bottom: 7px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.buttons-row {
+    display: flex;
+    justify-content: center;
+    margin: 1px 0;
+}
+
+.buttons-row button:first-child {
+    margin-left: 0;
+}
+
+
+.buttons-row button:last-child {
+    margin-right: 0;
+}
+
+
+.crypto-buttons-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.crypto-buttons-row button {
+    margin: 5px;
+    padding: 5px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    white-space: pre-line;
+    width: 130px;
+    height: 50px;
+    background-color: slategrey;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+}
+
+
+.crypto-buttons-row button:hover,
+.crypto-buttons-row button.active {
+    background-color: darkslategrey;
+    border: 2px solid #0a9d98;
+}
+
+
+
+.big-button {
+    margin-top: 15px;
+    padding: 20px 40px;
+    font-size: 18px;
+    color: #c1d8ef;
+    background-color: #2c3d5d;
+    border: 1px solid #565454;
+    border-radius: 15px;
+    cursor: pointer;
+    outline: none;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.big-button:hover {
+    background-color: #23938f;
+    border: 2px solid #bc93e0;
+}
+

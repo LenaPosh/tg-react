@@ -1,4 +1,4 @@
-import {DropdownDeposit} from "./deposit/DropdownDeposit";
+import { DropdownDeposit } from "./deposit/DropdownDeposit";
 import React, { useState, useEffect } from 'react';
 import './style.css';
 import { SiWalletconnect } from 'react-icons/si';
@@ -9,6 +9,7 @@ import { DropdownWithdraw } from "./withdraw/DropdownWithdraw";
 import TextInputWithLabel from "./withdraw/InputWithdraw";
 import DoubleInputWithLabel from "./withdraw/DoubleInputWithLabel";
 import ButtonWithdraw from "./withdraw/ButtonWithdraw";
+import {Link} from "react-router-dom";
 
 export const AppWallet = () => {
     const paymentAddress = '0x97d03eF9Ffe1Ac3Cb2ADa6D20C71d139245bdd7b';
@@ -65,8 +66,6 @@ export const AppWallet = () => {
                 </div>
             )
         },
-
-
         {
             label: 'Withdraw',
             content: (
@@ -82,10 +81,15 @@ export const AppWallet = () => {
                 </div>
             )
         },
-
         {
-            label: 'Buy Crypto',
-            content: <div>Content for Tab 3</div>,
+            label: (
+                <Link to="/buyCrypto">
+                    Buy crypto
+                </Link>
+            ),
+            content: (
+                <div className="tab-content">Your New Tab Content</div>
+            ),
         },
     ];
 

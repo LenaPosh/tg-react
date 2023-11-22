@@ -129,6 +129,7 @@ input {
 
 .button-withdraw:hover {
     background-color: darkslategrey;
+    border: 2px solid #0a9d98;
 }
 
 .text-after-button-withdraw {

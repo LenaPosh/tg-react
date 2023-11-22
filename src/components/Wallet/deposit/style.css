@@ -82,36 +82,12 @@
 
 
 
-/*.additional-options {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    margin-top: 10px;*/
-/*}*/
-/*.additional-options button {*/
-/*    padding: 5px 15px;*/
-/*    font-size: 16px;*/
-/*    cursor: pointer;*/
-/*    white-space: pre-line;*/
-/*    width: 180px;*/
-/*    height: 50px;*/
-/*    background-color: slategrey;*/
-/*    color: #fff;*/
-/*    border: none;*/
-/*    border-radius: 15px;*/
-/*    transition: background-color 0.3s;*/
-/*}*/
-
-/*.additional-options button:hover,*/
-/*.additional-options button.active {*/
-/*    background-color: darkslategrey;*/
-/*}*/
 
 .additional-options {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-    /*position: relative; !* Добавьте позиционирование *!*/
-    /*z-index: 1; !* Установите значение по необходимости, ниже, чем у футера *!*/
+
 }
 
 .additional-options button {
