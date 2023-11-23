@@ -43,7 +43,7 @@ export const AppFooter = () => {
                             <div className="menu-icon">
                                 <ImHome />
                             </div>
-                            <div className="menu-text">{t('home')}</div>
+                            <div className="menu-text" style={{ whiteSpace: 'nowrap' }}>{t('home')}</div>
                         </NavLink>
 
                         <NavLink to="/trade" className="menu-item">
