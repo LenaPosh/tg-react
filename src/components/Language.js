@@ -11,14 +11,14 @@ export const LanguageButtonsContainer = styled.div`
 `;
 
 export const LanguageButton = styled.button`
-  margin-right: 10px;
-  background-color: slategrey;
+  margin-right: 3px;
+  background-color: #454d56;
   color: white;
   border: none;
   border-radius: 7px;
   cursor: pointer;
-  padding: 10px;
-  font-size: 16px;
+  padding: 7px;
+  font-size: 10px;
 `;
 
 export const Language = () => {
