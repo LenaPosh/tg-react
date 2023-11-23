@@ -1,4 +1,4 @@
-/* MenuTop */
+/*!* MenuTop *!*/
 .logo-text {
     height: 100px;
     margin-left: 20px;
@@ -37,7 +37,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 820px;
+    margin-right: 40px;
     width: 180px;
     font-size: 20px;
 }

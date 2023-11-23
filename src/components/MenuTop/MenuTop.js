@@ -7,19 +7,13 @@ import { SiTether } from "react-icons/si";
 import { SiEthereum } from "react-icons/si";
 import { SiLitecoin } from "react-icons/si";
 import { FaBitcoin } from "react-icons/fa";
-import {I18nextProvider} from "react-i18next";
-import i18n from '../../i18n/ i18n';
-import {LanguageSelector} from "../../i18n/LanguageSelector";
-
-
-
-
+import {Language} from "../Language";
 
 export const StyledNav = styled.nav`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  justify-content: flex-start;
   padding: 25px 0;
   background-color: #2c2c2c;
   color: #fff;
@@ -55,7 +49,6 @@ export const MenuTop = () => {
 
     return (
         <StyledNav>
-            <I18nextProvider i18n={i18n}>
                     <NavLink to="/">
                         <img className='logo-text' alt='' src={LogoTB} />
                     </NavLink>
@@ -86,19 +79,9 @@ export const MenuTop = () => {
                                 ))}
                             </ul>
                         )}
-
                     </div>
-                <LanguageSelector />
-
-
-            </I18nextProvider>
-
-
-
-
+            <Language/>
         </StyledNav>
-
-
     )
 }
 

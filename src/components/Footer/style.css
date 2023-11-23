@@ -18,23 +18,6 @@
     /*box-sizing: border-box;*/
 }
 
-/*.menu-item:hover,*/
-/*.menu-item.active {*/
-/*    background-color: #1f1f1f; !* цвет при наведении или активации *!*/
-/*    color: #fff; !* цвет текста при активации *!*/
-/*}*/
-
-/*.menu-item.active {*/
-/*    background-color: rgba(0, 0, 0, 0.51); !* цвет при активации *!*/
-/*    color: #fff; !* цвет текста при активации *!*/
-/*    width: 110px; !* или другая фиксированная ширина, которую вы хотите использовать *!*/
-/*}*/
-
-/*.menu-item:hover {*/
-/*    background-color: #3366cc; !* цвет при наведении *!*/
-/*    color: #fff; !* цвет текста при наведении *!*/
-/*    width: 40%; !* уменьшенная ширина при наведении *!*/
-/*}*/
 
 .menu-icon {
     margin-right: 5px;
