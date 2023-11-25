@@ -1,8 +1,20 @@
 {
   "menu": "MENU",
   "home": "HOME",
-  "deposit": "deposit",
+  "deposit": "Deposit",
   "trade": "TRADE",
-  "wallet": "WALLET"
+  "wallet": "WALLET",
+  "text-after-button-withdraw": "Requesting a withdrawal will mean that you forget all bonus funds.",
+  "withdraw": "Withdraw",
+  "wallet_connect": "WalletConnect",
+  "BuyCrypto": "Buy Crypto",
+  "qr_code_title": {
+    "part_1": "Send only BTC to this deposit address.",
+    "part_2": "Values sent below the minimum amount or to an incorrect address will be lost."
+  },
+  "Your_withdrawal_address": "Ваш адрес вывода средств",
+  "Your_address": "Your address",
+  "Amount": "Amount",
+  "Enter_an_amount": "Enter_an_amount"
 
 }

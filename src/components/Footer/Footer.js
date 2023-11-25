@@ -52,6 +52,12 @@ export const AppFooter = () => {
                             </div>
                             <div className="menu-text">{t('trade')}</div>
                         </NavLink>
+                        {/*<NavLink to="/trade" className="menu-item">*/}
+                        {/*    <div className="menu-icon">*/}
+                        {/*        <TiChartBarOutline />*/}
+                        {/*    </div>*/}
+                        {/*    <div className="menu-text">{t('qr_code_title.part_1')}</div>*/}
+                        {/*</NavLink>*/}
 
                         <NavLink to="/wallet" className="menu-item">
                             <div className="menu-icon">

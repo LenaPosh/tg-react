@@ -12,7 +12,7 @@ export const LanguageButtonsContainer = styled.div`
 
 export const LanguageButton = styled.button`
   margin-right: 3px;
-  background-color: #454d56;
+  background-color: #3f3e3e;
   color: white;
   border: none;
   border-radius: 7px;
