@@ -10,6 +10,7 @@ import TextInputWithLabel from "./withdraw/InputWithdraw";
 import DoubleInputWithLabel from "./withdraw/DoubleInputWithLabel";
 import ButtonWithdraw from "./withdraw/ButtonWithdraw";
 import {Link} from "react-router-dom";
+import {t} from "i18next";
 
 export const AppWallet = () => {
     const paymentAddress = '0x97d03eF9Ffe1Ac3Cb2ADa6D20C71d139245bdd7b';
@@ -50,11 +51,11 @@ export const AppWallet = () => {
 
     const tabs = [
         {
-            label: 'Deposit',
+            label: t('deposit'),
             content: (
                 <div className="tab-content">
                     <div className="input-container">
-                        <label className="deposit-label">{depositLabelText}</label>
+                        <label className="deposit-label">{t('depositLabelText')}</label>
                         <DropdownDeposit onTokenChange={handleTokenChange} updateDepositText={updateDepositText} />
                     </div>
                     <CopyableAddress address={paymentAddress} />
@@ -67,7 +68,7 @@ export const AppWallet = () => {
             )
         },
         {
-            label: 'Withdraw',
+            label: t('withdraw'),
             content: (
                 <div className="tab-content">
                     <label className="deposit-label">{depositLabelText}</label>
@@ -84,7 +85,7 @@ export const AppWallet = () => {
         {
             label: (
                 <Link to="/buyCrypto">
-                    Buy crypto
+                    {t('BuyCrypto')}
                 </Link>
             ),
             content: (

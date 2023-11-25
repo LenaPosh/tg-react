@@ -15,6 +15,7 @@
   "Your_withdrawal_address": "Ваш адрес вывода средств",
   "Your_address": "Your address",
   "Amount": "Amount",
-  "Enter_an_amount": "Enter_an_amount"
+  "Enter_an_amount": "Enter_an_amount",
+  "depositLabelText": "Select the token to deposit (Min 0.0001BTC)"
 
 }

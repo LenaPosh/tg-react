@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { createChart } from 'lightweight-charts';
+import './style.css'
 
 const MyGraph = () => {
     const containerRef = useRef(null);
     const isMounted = useRef(true);
     const chartRef = useRef(null);
+
 
     // Функция для генерации данных свечного графика
     function generateCandlestickData() {
@@ -1070,9 +1072,28 @@ const MyGraph = () => {
                 const mainSeries = chartRef.current.addCandlestickSeries();
                 const candleStickData = generateCandlestickData();
                 mainSeries.setData(candleStickData);
+
+                const markers = [
+                    {
+                        time: candleStickData[0].time,
+                        position: 'aboveBar',
+                        color: 'green',
+                        shape: 'circle',
+                        text: 'Buy',
+                    },
+                    {
+                        time: candleStickData[candleStickData.length - 1].time,
+                        position: 'belowBar',
+                        color: 'red',
+                        shape: 'circle',
+                        text: 'Sell',
+                    },
+                    // Добавьте другие маркеры по необходимости
+                ];
+
+                mainSeries.setMarkers(markers);
             }
         }
-
         // Добавляем обработчик события изменения размера окна
         const handleResize = () => {
             if (isMounted.current && chartRef.current) {
