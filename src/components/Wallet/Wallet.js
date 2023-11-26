@@ -10,23 +10,26 @@ import TextInputWithLabel from "./withdraw/InputWithdraw";
 import DoubleInputWithLabel from "./withdraw/DoubleInputWithLabel";
 import ButtonWithdraw from "./withdraw/ButtonWithdraw";
 import {Link} from "react-router-dom";
-import {t} from "i18next";
+import {useTranslation} from "react-i18next";
 
 export const AppWallet = () => {
+    const { t } = useTranslation();
     const paymentAddress = '0x97d03eF9Ffe1Ac3Cb2ADa6D20C71d139245bdd7b';
     const [qrCodeValue, setQRCodeValue] = useState('');
     const [selectedToken, setSelectedToken] = useState({ value: 'BTC', label: '0.000000000000', minAmount: '0.0002' });
     const [inputValue1, setInputValue1] = useState('');
     const [inputValue2, setInputValue2] = useState('');
-    const [depositLabelText, setDepositLabelText] = useState('Select the token to deposit (Min 0.0001BTC)');
 
     useEffect(() => {
         setQRCodeValue(paymentAddress);
     }, [paymentAddress]);
 
+    const [depositLabelText, setDepositLabelText] = useState(() => t('depositLabelText'));
+
     const handleTokenChange = (value, label, minAmount) => {
         setSelectedToken({ value, label, minAmount });
     };
+
     const handleTokenChangeWithdraw = (value, label, minAmount) => {
         setSelectedToken({ value, label, minAmount });
     };
@@ -48,7 +51,6 @@ export const AppWallet = () => {
     const updateDepositText2 = (text) => {
         setDepositLabelText(text);
     };
-
     const tabs = [
         {
             label: t('deposit'),
@@ -61,8 +63,10 @@ export const AppWallet = () => {
                     <CopyableAddress address={paymentAddress} />
                     <div className="qr-code-container">
                         <QRCode value={qrCodeValue} className="qr-code" />
-                        <p className="qr-code-text">Send only {selectedToken.value} to this deposit address. <br /> Values sent below the
-                            minimum amount or to an incorrect address will be lost.</p>
+                        <p className="qr-code-text">
+                            {t('qr_code_title.part_1', { value: selectedToken.value })}<br />
+                            {t('qr_code_title.part_2')}
+                        </p>
                     </div>
                 </div>
             )
@@ -98,7 +102,7 @@ export const AppWallet = () => {
         <div className="header-wallet">
             <button className="rounded-button">
                 <div className="wallet-icon">
-                    <SiWalletconnect size="20" /> WalletConnect
+                    <SiWalletconnect size="20" /> {t('wallet_connect')}
                 </div>
             </button>
 

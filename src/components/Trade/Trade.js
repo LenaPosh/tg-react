@@ -8,7 +8,6 @@ const MyGraph = () => {
     const chartRef = useRef(null);
 
 
-    // Функция для генерации данных свечного графика
     function generateCandlestickData() {
         return [
             {
@@ -1060,14 +1059,16 @@ const MyGraph = () => {
     useEffect(() => {
         const container = containerRef.current;
 
-        // Проверяем, что container существует перед созданием графика
         if (container) {
             chartRef.current = createChart(container, {
                 width: window.innerWidth,
                 height: window.innerHeight,
+                layout: {
+                    backgroundColor: '#1a1a1a',
+                    textColor: '#b2b2b2',
+                },
             });
 
-            // Проверяем, что chartRef.current не равно null, прежде чем вызывать addCandlestickSeries
             if (chartRef.current) {
                 const mainSeries = chartRef.current.addCandlestickSeries();
                 const candleStickData = generateCandlestickData();
@@ -1088,13 +1089,16 @@ const MyGraph = () => {
                         shape: 'circle',
                         text: 'Sell',
                     },
-                    // Добавьте другие маркеры по необходимости
                 ];
 
                 mainSeries.setMarkers(markers);
+                const canvasElement = container.querySelector('canvas');
+                if (canvasElement) {
+                    canvasElement.classList.add('custom-chart-canvas');
+                }
             }
         }
-        // Добавляем обработчик события изменения размера окна
+        // обработчик события изменения размера окна
         const handleResize = () => {
             if (isMounted.current && chartRef.current) {
                 chartRef.current.resize(window.innerWidth, window.innerHeight);
@@ -1103,12 +1107,11 @@ const MyGraph = () => {
 
         window.addEventListener('resize', handleResize);
 
-        // Убираем обработчик события при размонтировании компонента
         return () => {
             isMounted.current = false;
             window.removeEventListener('resize', handleResize);
 
-            // Проверяем, что chartRef.current не равно null, прежде чем вызывать remove
+
             if (chartRef.current) {
                 chartRef.current.remove();
             }
@@ -1118,7 +1121,7 @@ const MyGraph = () => {
     return (
         <div
             ref={containerRef}
-            className="custom-chart-container"
+           style={{ backgroundColor: '#1a1a1a', color: '#b2b2b2' }}
         />
     );
 };
