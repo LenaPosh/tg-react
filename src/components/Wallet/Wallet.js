@@ -13,7 +13,7 @@ import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 
 export const AppWallet = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const paymentAddress = '0x97d03eF9Ffe1Ac3Cb2ADa6D20C71d139245bdd7b';
     const [qrCodeValue, setQRCodeValue] = useState('');
     const [selectedToken, setSelectedToken] = useState({ value: 'BTC', label: '0.000000000000', minAmount: '0.0002' });
@@ -93,7 +93,9 @@ export const AppWallet = () => {
                 </Link>
             ),
             content: (
-                <div className="tab-content">Your New Tab Content</div>
+                <div className={`tab-content ${i18n.language === 'ru' ? 'russian-version' : ''}`}>
+                    Your New Tab Content
+                </div>
             ),
         },
     ];

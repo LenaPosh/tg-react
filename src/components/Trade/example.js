@@ -10,7 +10,7 @@ const MyGraphSecond = () => {
         const container = containerRef.current;
 
         const chart = LightweightCharts.createChart(container, {
-            width: 600,
+            width: 450,
             height: 300,
             timeScale: {
                 timeVisible: true,
