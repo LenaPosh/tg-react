@@ -32,6 +32,13 @@ export const AppFooter = () => {
             <FooterStyle className="footer">
                 <div className="menu-navigation">
                     <div className="menu-items">
+                        <NavLink to="/home" className="menu-item">
+                            <div className="menu-icon">
+                                <ImHome />
+                            </div>
+                            <div className="menu-text" style={{ whiteSpace: 'nowrap' }}>{t('home')}</div>
+                        </NavLink>
+
                         <NavLink to="/menu" className="menu-item">
                             <div className="menu-icon">
                                 <RiMenu2Line />
@@ -39,12 +46,7 @@ export const AppFooter = () => {
                             <div className="menu-text">{t('menu')}</div>
                         </NavLink>
 
-                        <NavLink to="/home" className="menu-item">
-                            <div className="menu-icon">
-                                <ImHome />
-                            </div>
-                            <div className="menu-text" style={{ whiteSpace: 'nowrap' }}>{t('home')}</div>
-                        </NavLink>
+
 
                         <NavLink to="/trade" className="menu-item">
                             <div className="menu-icon">
