@@ -1312,7 +1312,7 @@ function getMarkers(data, series, chartType) {
                 position: markerValue > series.priceToCoordinate(markerValue) ? 'belowBar' : 'aboveBar',
                 color: '#e91e63',
                 shape: 'arrowDown',
-                text: `Продать @ ${Math.floor(markerValue + 2)}`,
+                text: `Buy @ ${Math.floor(markerValue + 2)}`,
             });
         } else {
             markers.push({
@@ -1320,7 +1320,7 @@ function getMarkers(data, series, chartType) {
                 position: markerValue > series.priceToCoordinate(markerValue) ? 'aboveBar' : 'belowBar',
                 color: '#2196F3',
                 shape: 'arrowUp',
-                text: `Купить @ ${Math.floor(markerValue - 2)}`,
+                text: `Sell @ ${Math.floor(markerValue - 2)}`,
             });
         }
     }
