@@ -3,6 +3,7 @@ import {AppFooter} from "../components/Footer/Footer";
 // import MyGraph from "../components/Trade/Trade";
 import MyGraphSecond from "../components/Trade/example";
 
+
 export const TradePage = () => {
     return (
         <>
