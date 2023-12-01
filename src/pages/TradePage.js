@@ -1,7 +1,8 @@
 import {MenuTop} from "../components/MenuTop/MenuTop";
 import {AppFooter} from "../components/Footer/Footer";
 // import MyGraph from "../components/Trade/Trade";
-import MyGraphSecond from "../components/Trade/example";
+// import MyGraphSecond from "../components/Trade/example";
+import CandlestickChart from "../components/Trade/apexcharts";
 
 
 export const TradePage = () => {
@@ -9,7 +10,8 @@ export const TradePage = () => {
         <>
             <MenuTop/>
             {/*<MyGraph/>*/}
-            <MyGraphSecond/>
+            {/*<MyGraphSecond/>*/}
+            <CandlestickChart/>
             <AppFooter/>
         </>
 

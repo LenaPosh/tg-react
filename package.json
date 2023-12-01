@@ -10,6 +10,7 @@
     "apexcharts": "^3.44.0",
     "chart.js": "^4.4.0",
     "clipboard-copy": "^4.0.1",
+    "dayjs": "^1.11.10",
     "fancy-canvas": "^2.1.0",
     "i18next": "^23.7.6",
     "i18next-browser-languagedetector": "^7.2.0",
