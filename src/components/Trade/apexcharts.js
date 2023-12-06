@@ -1,7 +1,4 @@
-
-
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import dayjs from 'dayjs';
 
@@ -9,10 +6,13 @@ const CandlestickChart = () => {
     const [chartType, setChartType] = useState('candlestick');
     const [lockTime, setLockTime] = useState(new Date(1538829000000).getTime());
     const [expireTime, setExpireTime] = useState(new Date(1538834400000).getTime());
-    const [buyTime, setBuyTime] = useState(new Date(1538809200000).getTime()); // Устанавливаем время покупки при загрузке
+    const [buyTime, setBuyTime] = useState(new Date(1538809200000).getTime());
     const [sellTime, setSellTime] = useState(new Date(1538816400000).getTime());
+    const chartRef = useRef(null);
 
     const [chartData, setChartData] = useState([]);
+    const [redEntry, setRedEntry] = useState(null);
+    const [greenEntry, setGreenEntry] = useState(null);
 
     const generateRandomDataPoint = () => {
         const newDate = new Date();
@@ -32,24 +32,181 @@ const CandlestickChart = () => {
     };
 
     useEffect(() => {
-        const interval = setInterval(generateRandomDataPoint, 1000);
+        const interval = setInterval(generateRandomDataPoint, 700);
 
         return () => clearInterval(interval);
     }, []);
 
     const lineData = chartData.map((item) => ({
         x: item.x,
-        y: item.y[3],
+        y: item.y && item.y.length >= 4 ? item.y[3] : 0,
     }));
+
+    const handleEntryPrice = (color) => {
+        const currentData = chartData.length > 0 ? chartData[chartData.length - 1] : null;
+
+        if (currentData !== null) {
+            const entry = { time: currentData.x, price: currentData.y[3] };
+
+            if (color === 'red' && !redEntry) {
+                setRedEntry(entry);
+            } else if (color === 'green' && !greenEntry) {
+                setGreenEntry(entry);
+            }
+        }
+    };
+
+    const redEntryAnnotation = redEntry !== null ? {
+        x: redEntry.time,
+        y: redEntry.price,
+        marker: {
+            size: 3,
+            fillColor: '#FF0000',
+            strokeWidth: 0,
+        },
+        label: {
+            borderColor: '#FF0000',
+            style: {
+                fontSize: '12px',
+                color: '#333333',
+                background: '#FF0000',
+            },
+            offsetY: 0,
+            text: 'Вход (Красный)',
+        },
+        type: 'scatter',
+    } : null;
+
+    const greenEntryAnnotation = greenEntry !== null ? {
+        x: greenEntry.time,
+        y: greenEntry.price,
+        marker: {
+            size: 3,
+            fillColor: '#00FF00',
+            strokeWidth: 0,
+        },
+        label: {
+            borderColor: '#00FF00',
+            style: {
+                fontSize: '12px',
+                color: '#333333',
+                background: '#00FF00',
+            },
+            offsetY: 0,
+            text: 'Вход (Зеленый)',
+        },
+        type: 'scatter',
+    } : null;
+
+    const buyPoint = chartData.length > 0 ? {
+        x: buyTime,
+        y: chartData[chartData.length - 1]?.y[3],
+        marker: {
+            size: 6,
+            fillColor: '#4CAF50',
+            strokeWidth: 0,
+        },
+        label: {
+            borderColor: '#4CAF50',
+            style: {
+                fontSize: '12px',
+                color: '#333333',
+                background: '#4CAF50',
+            },
+            offsetY: 0,
+            text: 'Buy',
+        },
+        type: 'scatter',
+    } : null;
+
+    const sellPoint = chartData.length > 0 ? {
+        x: sellTime,
+        y: chartData[chartData.length - 1]?.y[3],
+        marker: {
+            size: 6,
+            fillColor: '#FF9800',
+            strokeWidth: 0,
+        },
+        label: {
+            borderColor: '#FF9800',
+            style: {
+                fontSize: '12px',
+                color: '#333333',
+                background: '#FF9800',
+            },
+            offsetY: 0,
+            text: 'Sell',
+        },
+        type: 'scatter',
+    } : null;
+
+    const handleZoomIn = () => {
+        const chart = chartRef.current.chart;
+
+        if (chart) {
+            const { minX, maxX } = chart.w.globals;
+            const zoomFactorIn = 0.1;
+            const zoomedRange = (maxX - minX) * zoomFactorIn;
+            const newMinX = minX + zoomedRange;
+            const newMaxX = maxX - zoomedRange;
+
+            chart.updateOptions({
+                xaxis: {
+                    min: newMinX,
+                    max: newMaxX,
+                },
+            });
+        }
+    };
+
+    const handleZoomOut = () => {
+        const chart = chartRef.current.chart;
+
+        if (chart) {
+            const { minX, maxX } = chart.w.globals;
+            const zoomFactorOut = 0.9;
+            const zoomedRange = (maxX - minX) * zoomFactorOut;
+            const newMinX = minX - zoomedRange;
+            const newMaxX = maxX + zoomedRange;
+
+            chart.updateOptions({
+                xaxis: {
+                    min: newMinX,
+                    max: newMaxX,
+                },
+            });
+        }
+    };
 
     const options = {
         chart: {
             height: 350,
             type: chartType,
+            zoom: {
+                enabled: true,
+                type: 'x',
+                zoomedArea: {
+                    fill: {
+                        color: '#90CAF9',
+                        opacity: 0.4,
+                    },
+                    stroke: {
+                        color: '#0D47A1',
+                        opacity: 0.7,
+                        width: 1,
+                    },
+                },
+            },
+        },
+        theme: {
+            mode: 'dark',
         },
         title: {
             text: `${chartType === 'candlestick' ? 'CandleStick' : 'Line'} Chart - Category X-axis`,
             align: 'left',
+            style: {
+                color: 'rgba(255, 255, 255, 0.87)',
+            },
         },
         annotations: {
             xaxis: [
@@ -95,7 +252,8 @@ const CandlestickChart = () => {
             points: [
                 {
                     x: buyTime,
-                    y: chartData[chartData.length - 1]?.y[3], // Получаем y координату последней добавленной точки данных
+                    y: chartData.find((data) => dayjs(data.x).isSame(dayjs(buyTime)))?.y?.[3] || 0,
+
                     marker: {
                         size: 6,
                         fillColor: '#4CAF50',
@@ -115,7 +273,8 @@ const CandlestickChart = () => {
                 },
                 {
                     x: sellTime,
-                    y: chartData[chartData.length - 1]?.y[3], // Получаем y координату последней добавленной точки данных
+                    y: chartData.find((data) => dayjs(data.x).isSame(dayjs(sellTime)))?.y?.[3] || 0,
+
                     marker: {
                         size: 6,
                         fillColor: '#FF9800',
@@ -133,6 +292,8 @@ const CandlestickChart = () => {
                     },
                     type: 'scatter',
                 },
+                redEntryAnnotation,
+                greenEntryAnnotation,
             ],
         },
         tooltip: {
@@ -142,18 +303,46 @@ const CandlestickChart = () => {
             type: 'datetime',
             labels: {
                 formatter: (val) => dayjs(val).format('MMM DD HH:mm'),
+                style: {
+                    colors: 'rgba(255, 255, 255, 0.87)',
+                },
             },
         },
         yaxis: {
             tooltip: {
                 enabled: true,
             },
+            labels: {
+                style: {
+                    colors: 'rgba(255, 255, 255, 0.87)',
+                },
+            },
         },
     };
 
     return (
         <div id="chart">
-            <ReactApexChart options={options} series={[{ data: chartType === 'candlestick' ? chartData : lineData }]} type={chartType} height={350} />
+            <ReactApexChart
+                options={options}
+                series={[{ data: chartType === 'candlestick' ? chartData : lineData }]}
+                type={chartType}
+                height={350}
+                ref={chartRef}
+            />
+            <button
+                onClick={() => !redEntry && handleEntryPrice('red')}
+                style={{ backgroundColor: '#FF0000', color: '#FFFFFF' }}
+            >
+                Fix Red Entry Price
+            </button>
+            <button
+                onClick={() => !greenEntry && handleEntryPrice('green')}
+                style={{ backgroundColor: '#00FF00', color: '#FFFFFF' }}
+            >
+                Fix Green Entry Price
+            </button>
+            <button onClick={handleZoomIn}>Zoom In</button>
+            <button onClick={handleZoomOut}>Zoom Out</button>
             <button
                 onClick={() => {
                     setChartType((prevType) => (prevType === 'candlestick' ? 'line' : 'candlestick'));
@@ -168,7 +357,6 @@ const CandlestickChart = () => {
 };
 
 export default CandlestickChart;
-
 
 
 
