@@ -14,25 +14,48 @@ const CandlestickChart = () => {
     const [redEntry, setRedEntry] = useState(null);
     const [greenEntry, setGreenEntry] = useState(null);
 
-    const generateRandomDataPoint = () => {
-        const newDate = new Date();
-        newDate.setSeconds(newDate.getSeconds() + 1);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setChartData((prevData) => {
+                const newDate = new Date();
+                newDate.setSeconds(newDate.getSeconds() + 5);
 
-        const newDataPoint = {
-            x: newDate.getTime(),
-            y: [
-                (Math.random() * (7000 - 6500) + 6500).toFixed(1), // округление до 2 знаков после запятой
-                (Math.random() * (7000 - 6500) + 6500).toFixed(1),
-                (Math.random() * (7000 - 6500) + 6500).toFixed(1),
-                (Math.random() * (7000 - 6500) + 6500).toFixed(1),
-            ],
-        };
+                const newDataPoint = {
+                    x: newDate.getTime(),
+                    y: [
+                        (Math.random() * (7000 - 6500) + 6500).toFixed(1),
+                        (Math.random() * (7000 - 6500) + 6500).toFixed(1),
+                        (Math.random() * (7000 - 6500) + 6500).toFixed(1),
+                        (Math.random() * (7000 - 6500) + 6500).toFixed(1),
+                    ],
+                };
 
-        setChartData((prevData) => [...prevData, newDataPoint]);
-    };
+                const newData = prevData ? [...prevData, newDataPoint] : [newDataPoint];
+
+                return newData.length >= 50 ? newData.slice(-50) : newData;
+            });
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
-        const interval = setInterval(generateRandomDataPoint, 700);
+        const interval = setInterval(() => {
+            const newDate = new Date();
+            newDate.setSeconds(newDate.getSeconds() + 5);
+
+            const newDataPoint = {
+                x: newDate.getTime(),
+                y: [
+                    (Math.random() * (7000 - 6500) + 6500).toFixed(1),
+                    (Math.random() * (7000 - 6500) + 6500).toFixed(1),
+                    (Math.random() * (7000 - 6500) + 6500).toFixed(1),
+                    (Math.random() * (7000 - 6500) + 6500).toFixed(1),
+                ],
+            };
+
+            setChartData((prevData) => (prevData ? [...prevData, newDataPoint] : [newDataPoint]));
+        }, 700);
 
         return () => clearInterval(interval);
     }, []);
@@ -202,11 +225,7 @@ const CandlestickChart = () => {
             mode: 'dark',
         },
         title: {
-            text: `${chartType === 'candlestick' ? 'CandleStick' : 'Line'} Chart - Category X-axis`,
-            align: 'left',
-            style: {
-                color: 'rgba(255, 255, 255, 0.87)',
-            },
+            text: 'Trading Chart',
         },
         annotations: {
             xaxis: [
@@ -320,11 +339,19 @@ const CandlestickChart = () => {
         },
     };
 
+    if (chartType === 'line') {
+        options.stroke = {
+            width: 2,
+            colors: ['#00F'],
+        };
+    }
+
+
     return (
         <div id="chart" style={{ marginTop: '40px' }}>
             <ReactApexChart
                 options={options}
-                series={[{ data: chartType === 'candlestick' ? chartData : lineData }]}
+                series={[{ data: chartData.length > 0 ? (chartType === 'candlestick' ? chartData : lineData) : [] }]}
                 type={chartType}
                 height={350}
                 ref={chartRef}
