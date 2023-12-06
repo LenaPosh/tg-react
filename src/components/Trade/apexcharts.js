@@ -21,10 +21,10 @@ const CandlestickChart = () => {
         const newDataPoint = {
             x: newDate.getTime(),
             y: [
-                Math.random() * (7000 - 6500) + 6500,
-                Math.random() * (7000 - 6500) + 6500,
-                Math.random() * (7000 - 6500) + 6500,
-                Math.random() * (7000 - 6500) + 6500,
+                (Math.random() * (7000 - 6500) + 6500).toFixed(1), // округление до 2 знаков после запятой
+                (Math.random() * (7000 - 6500) + 6500).toFixed(1),
+                (Math.random() * (7000 - 6500) + 6500).toFixed(1),
+                (Math.random() * (7000 - 6500) + 6500).toFixed(1),
             ],
         };
 
@@ -321,7 +321,7 @@ const CandlestickChart = () => {
     };
 
     return (
-        <div id="chart">
+        <div id="chart" style={{ marginTop: '40px' }}>
             <ReactApexChart
                 options={options}
                 series={[{ data: chartType === 'candlestick' ? chartData : lineData }]}
