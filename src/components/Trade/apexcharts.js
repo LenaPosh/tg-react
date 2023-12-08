@@ -4,8 +4,8 @@ import dayjs from 'dayjs';
 
 const CandlestickChart = () => {
     const [chartType, setChartType] = useState('candlestick');
-    const [lockTime, setLockTime] = useState(new Date(1538829000000).getTime());
-    const [expireTime, setExpireTime] = useState(new Date(1538834400000).getTime());
+    const lockTime = new Date().getTime() + 3000; // Пример: текущее время + 5 секунд
+    const expireTime = new Date().getTime() + 5000;
     const [buyTime, setBuyTime] = useState(new Date(1538809200000).getTime());
     const [sellTime, setSellTime] = useState(new Date(1538816400000).getTime());
     const chartRef = useRef(null);
@@ -14,33 +14,49 @@ const CandlestickChart = () => {
     const [redEntry, setRedEntry] = useState(null);
     const [greenEntry, setGreenEntry] = useState(null);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setChartData((prevData) => {
-                const newDate = new Date();
-                newDate.setSeconds(newDate.getSeconds() + 5);
 
-                const newDataPoint = {
-                    x: newDate.getTime(),
-                    y: [
-                        (Math.random() * (7000 - 6500) + 6500).toFixed(1),
-                        (Math.random() * (7000 - 6500) + 6500).toFixed(1),
-                        (Math.random() * (7000 - 6500) + 6500).toFixed(1),
-                        (Math.random() * (7000 - 6500) + 6500).toFixed(1),
-                    ],
-                };
+    const lockTimeLine = {
+        x: lockTime,
+        borderColor: '#FF4560',
+        label: {
+            borderColor: '#FF4560',
+            style: {
+                fontSize: '12px',
+                color: 'rgba(0,0,0,0.57)',
+                background: '#FF4560',
+            },
+            offsetY: -5,
+            text: 'Lock Time',
+            position: 'right',
+            align: 'right', // выравнивание направо
+        },
+        type: 'line',
+        strokeDashArray: 0, // убираем пунктир
+        borderWidth: 1, // уменьшаем ширину
+    };
 
-                const newData = prevData ? [...prevData, newDataPoint] : [newDataPoint];
+    const expireTimeLine = {
+        x: expireTime,
+        borderColor: '#00E396',
+        label: {
+            borderColor: '#00E396',
+            style: {
+                fontSize: '12px',
+                color: '#333333',
+                background: '#00E396',
+            },
+            offsetY: -5,
+            text: 'Expire Time',
+            position: 'right',
+            align: 'right', // выравнивание направо
+        },
+        type: 'line',
+        strokeDashArray: 0, // убираем пунктир
+        borderWidth: 1, // уменьшаем ширину
+    };
 
-                return newData.length >= 50 ? newData.slice(-50) : newData;
-            });
-        }, 5000);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
+    const updateChartData = () => {
+        setChartData((prevData) => {
             const newDate = new Date();
             newDate.setSeconds(newDate.getSeconds() + 5);
 
@@ -54,8 +70,14 @@ const CandlestickChart = () => {
                 ],
             };
 
-            setChartData((prevData) => (prevData ? [...prevData, newDataPoint] : [newDataPoint]));
-        }, 700);
+            const newData = prevData ? [...prevData, newDataPoint] : [newDataPoint];
+
+            return newData.length >= 50 ? newData.slice(-50) : newData;
+        });
+    };
+
+    useEffect(() => {
+        const interval = setInterval(updateChartData, 1000);
 
         return () => clearInterval(interval);
     }, []);
@@ -121,47 +143,6 @@ const CandlestickChart = () => {
         type: 'scatter',
     } : null;
 
-    const buyPoint = chartData.length > 0 ? {
-        x: buyTime,
-        y: chartData[chartData.length - 1]?.y[3],
-        marker: {
-            size: 6,
-            fillColor: '#4CAF50',
-            strokeWidth: 0,
-        },
-        label: {
-            borderColor: '#4CAF50',
-            style: {
-                fontSize: '12px',
-                color: '#333333',
-                background: '#4CAF50',
-            },
-            offsetY: 0,
-            text: 'Buy',
-        },
-        type: 'scatter',
-    } : null;
-
-    const sellPoint = chartData.length > 0 ? {
-        x: sellTime,
-        y: chartData[chartData.length - 1]?.y[3],
-        marker: {
-            size: 6,
-            fillColor: '#FF9800',
-            strokeWidth: 0,
-        },
-        label: {
-            borderColor: '#FF9800',
-            style: {
-                fontSize: '12px',
-                color: '#333333',
-                background: '#FF9800',
-            },
-            offsetY: 0,
-            text: 'Sell',
-        },
-        type: 'scatter',
-    } : null;
 
     const handleZoomIn = () => {
         const chart = chartRef.current.chart;
@@ -201,6 +182,7 @@ const CandlestickChart = () => {
         }
     };
 
+
     const options = {
         chart: {
             height: 350,
@@ -228,47 +210,48 @@ const CandlestickChart = () => {
             text: 'Trading Chart',
         },
         annotations: {
-            xaxis: [
-                {
-                    x: lockTime,
-                    borderColor: '#FF4560',
-                    label: {
-                        borderColor: '#FF4560',
-                        style: {
-                            fontSize: '12px',
-                            color: 'rgba(0,0,0,0.57)',
-                            background: '#FF4560',
-                            position: 'absolute',
-                            transform: 'rotate(-90deg)',
-                            transformOrigin: 'left top',
-                            whiteSpace: 'nowrap',
-                        },
-                        offsetY: -5,
-                        text: 'Lock Time',
-                    },
-                    type: 'line',
-                },
-                {
-                    x: expireTime,
-                    borderColor: '#00E396',
-                    label: {
-                        borderColor: '#00E396',
-                        style: {
-                            fontSize: '12px',
-                            color: '#333333',
-                            background: '#00E396',
-                            position: 'absolute',
-                            transform: 'rotate(-90deg)',
-                            transformOrigin: 'left top',
-                            whiteSpace: 'nowrap',
-                        },
-                        offsetY: -5,
-                        text: 'Expire Time',
-                    },
-                    type: 'line',
-                },
+            xaxis: [lockTimeLine, expireTimeLine
+                // {
+                //     x: lockTime,
+                //     borderColor: '#FF4560',
+                //     label: {
+                //         borderColor: '#FF4560',
+                //         style: {
+                //             fontSize: '12px',
+                //             color: 'rgba(0,0,0,0.57)',
+                //             background: '#FF4560',
+                //         },
+                //         offsetY: -5,
+                //         text: 'Lock Time',
+                //         position: 'right',
+                //         align: 'right', // выравнивание направо
+                //     },
+                //     type: 'line',
+                //     strokeDashArray: 0, // убираем пунктир
+                //     borderWidth: 1, // уменьшаем ширину
+                // },
+                // {
+                //     x: expireTime,
+                //     borderColor: '#00E396',
+                //     label: {
+                //         borderColor: '#00E396',
+                //         style: {
+                //             fontSize: '12px',
+                //             color: '#333333',
+                //             background: '#00E396',
+                //         },
+                //         offsetY: -5,
+                //         text: 'Expire Time',
+                //         position: 'right',
+                //         align: 'right', // выравнивание направо
+                //     },
+                //     type: 'line',
+                //     strokeDashArray: 0, // убираем пунктир
+                //     borderWidth: 1, // уменьшаем ширину
+                // },
             ],
             points: [
+
                 {
                     x: buyTime,
                     y: chartData.find((data) => dayjs(data.x).isSame(dayjs(buyTime)))?.y?.[3] || 0,
@@ -351,7 +334,13 @@ const CandlestickChart = () => {
         <div id="chart" style={{ marginTop: '40px' }}>
             <ReactApexChart
                 options={options}
-                series={[{ data: chartData.length > 0 ? (chartType === 'candlestick' ? chartData : lineData) : [] }]}
+                series={[
+                    {
+                        data: chartData.length > 0
+                            ? (chartType === 'candlestick' ? chartData : lineData)
+                            : []
+                    }
+                ]}
                 type={chartType}
                 height={350}
                 ref={chartRef}
@@ -373,8 +362,6 @@ const CandlestickChart = () => {
             <button
                 onClick={() => {
                     setChartType((prevType) => (prevType === 'candlestick' ? 'line' : 'candlestick'));
-                    setLockTime(null);
-                    setExpireTime(null);
                 }}
             >
                 Переключить тип графика

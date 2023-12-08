@@ -10,26 +10,22 @@ import TextInputWithLabel from "./withdraw/InputWithdraw";
 import DoubleInputWithLabel from "./withdraw/DoubleInputWithLabel";
 import ButtonWithdraw from "./withdraw/ButtonWithdraw";
 import {Link} from "react-router-dom";
-import {useTranslation} from "react-i18next";
 
 export const AppWallet = () => {
-    const { t, i18n } = useTranslation();
     const paymentAddress = '0x97d03eF9Ffe1Ac3Cb2ADa6D20C71d139245bdd7b';
     const [qrCodeValue, setQRCodeValue] = useState('');
     const [selectedToken, setSelectedToken] = useState({ value: 'BTC', label: '0.000000000000', minAmount: '0.0002' });
     const [inputValue1, setInputValue1] = useState('');
     const [inputValue2, setInputValue2] = useState('');
+    const [depositLabelText, setDepositLabelText] = useState('Select the token to deposit (Min 0.0001BTC)');
 
     useEffect(() => {
         setQRCodeValue(paymentAddress);
     }, [paymentAddress]);
 
-    const [depositLabelText, setDepositLabelText] = useState(() => t('depositLabelText'));
-
     const handleTokenChange = (value, label, minAmount) => {
         setSelectedToken({ value, label, minAmount });
     };
-
     const handleTokenChangeWithdraw = (value, label, minAmount) => {
         setSelectedToken({ value, label, minAmount });
     };
@@ -51,28 +47,27 @@ export const AppWallet = () => {
     const updateDepositText2 = (text) => {
         setDepositLabelText(text);
     };
+
     const tabs = [
         {
-            label: t('deposit'),
+            label: 'Deposit',
             content: (
                 <div className="tab-content">
                     <div className="input-container">
-                        <label className="deposit-label">{t('depositLabelText')}</label>
+                        <label className="deposit-label">{depositLabelText}</label>
                         <DropdownDeposit onTokenChange={handleTokenChange} updateDepositText={updateDepositText} />
                     </div>
                     <CopyableAddress address={paymentAddress} />
                     <div className="qr-code-container">
                         <QRCode value={qrCodeValue} className="qr-code" />
-                        <p className="qr-code-text">
-                            {t('qr_code_title.part_1', { value: selectedToken.value })}<br />
-                            {t('qr_code_title.part_2')}
-                        </p>
+                        <p className="qr-code-text">Send only {selectedToken.value} to this deposit address. <br /> Values sent below the
+                            minimum amount or to an incorrect address will be lost.</p>
                     </div>
                 </div>
             )
         },
         {
-            label: t('withdraw'),
+            label: 'Withdraw',
             content: (
                 <div className="tab-content">
                     <label className="deposit-label">{depositLabelText}</label>
@@ -89,13 +84,11 @@ export const AppWallet = () => {
         {
             label: (
                 <Link to="/buyCrypto">
-                    {t('BuyCrypto')}
+                    Buy crypto
                 </Link>
             ),
             content: (
-                <div className={`tab-content ${i18n.language === 'ru' ? 'russian-version' : ''}`}>
-                    Your New Tab Content
-                </div>
+                <div className="tab-content">Your New Tab Content</div>
             ),
         },
     ];
@@ -104,7 +97,7 @@ export const AppWallet = () => {
         <div className="header-wallet">
             <button className="rounded-button">
                 <div className="wallet-icon">
-                    <SiWalletconnect size="20" /> {t('wallet_connect')}
+                    <SiWalletconnect size="20" /> WalletConnect
                 </div>
             </button>
 
