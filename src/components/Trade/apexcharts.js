@@ -88,16 +88,19 @@ const CandlestickChart = () => {
     }));
 
     const handleEntryPrice = (color) => {
-        const currentData = chartData.length > 0 ? chartData[chartData.length - 1] : null;
+        // Убедимся, что chartData содержит элементы
+        if (chartData.length === 0) return;
 
-        if (currentData !== null) {
-            const entry = { time: currentData.x, price: currentData.y[3] };
+        const currentData = chartData[chartData.length - 1];
+        // Проверим, что currentData имеет свойство y с четырьмя элементами
+        if (!currentData.y || currentData.y.length < 4) return;
 
-            if (color === 'red' && !redEntry) {
-                setRedEntry(entry);
-            } else if (color === 'green' && !greenEntry) {
-                setGreenEntry(entry);
-            }
+        const entry = { time: currentData.x, price: currentData.y[3] };
+
+        if (color === 'red' && !redEntry) {
+            setRedEntry(entry);
+        } else if (color === 'green' && !greenEntry) {
+            setGreenEntry(entry);
         }
     };
 
@@ -201,6 +204,10 @@ const CandlestickChart = () => {
                         width: 1,
                     },
                 },
+                pan: {
+                    enabled: true,
+                    mode: 'x',
+                }
             },
         },
         theme: {
@@ -211,44 +218,6 @@ const CandlestickChart = () => {
         },
         annotations: {
             xaxis: [lockTimeLine, expireTimeLine
-                // {
-                //     x: lockTime,
-                //     borderColor: '#FF4560',
-                //     label: {
-                //         borderColor: '#FF4560',
-                //         style: {
-                //             fontSize: '12px',
-                //             color: 'rgba(0,0,0,0.57)',
-                //             background: '#FF4560',
-                //         },
-                //         offsetY: -5,
-                //         text: 'Lock Time',
-                //         position: 'right',
-                //         align: 'right', // выравнивание направо
-                //     },
-                //     type: 'line',
-                //     strokeDashArray: 0, // убираем пунктир
-                //     borderWidth: 1, // уменьшаем ширину
-                // },
-                // {
-                //     x: expireTime,
-                //     borderColor: '#00E396',
-                //     label: {
-                //         borderColor: '#00E396',
-                //         style: {
-                //             fontSize: '12px',
-                //             color: '#333333',
-                //             background: '#00E396',
-                //         },
-                //         offsetY: -5,
-                //         text: 'Expire Time',
-                //         position: 'right',
-                //         align: 'right', // выравнивание направо
-                //     },
-                //     type: 'line',
-                //     strokeDashArray: 0, // убираем пунктир
-                //     borderWidth: 1, // уменьшаем ширину
-                // },
             ],
             points: [
 
@@ -329,6 +298,33 @@ const CandlestickChart = () => {
         };
     }
 
+    const handleMoveLeft = () => {
+        const chart = chartRef.current.chart;
+        if (chart) {
+            const { minX, maxX } = chart.w.globals;
+            const moveFactor = (maxX - minX) * 0.1; // двигаем на 10% от текущего зума
+            chart.updateOptions({
+                xaxis: {
+                    min: minX - moveFactor,
+                    max: maxX - moveFactor,
+                },
+            });
+        }
+    };
+
+    const handleMoveRight = () => {
+        const chart = chartRef.current.chart;
+        if (chart) {
+            const { minX, maxX } = chart.w.globals;
+            const moveFactor = (maxX - minX) * 0.1; // двигаем на 10% от текущего зума
+            chart.updateOptions({
+                xaxis: {
+                    min: minX + moveFactor,
+                    max: maxX + moveFactor,
+                },
+            });
+        }
+    };
 
     return (
         <div id="chart" style={{ marginTop: '40px' }}>
@@ -366,6 +362,8 @@ const CandlestickChart = () => {
             >
                 Переключить тип графика
             </button>
+            <button onClick={handleMoveLeft}>Move Left</button>
+            <button onClick={handleMoveRight}>Move Right</button>
         </div>
     );
 };
