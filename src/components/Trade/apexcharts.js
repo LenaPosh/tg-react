@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 
 const CandlestickChart = () => {
     const [chartType, setChartType] = useState('candlestick');
-    const lockTime = new Date().getTime() + 3000; // Пример: текущее время + 5 секунд
+    const lockTime = new Date().getTime() + 3000;
     const expireTime = new Date().getTime() + 5000;
     const [buyTime, setBuyTime] = useState(new Date(1538809200000).getTime());
     const [sellTime, setSellTime] = useState(new Date(1538816400000).getTime());
@@ -28,11 +28,11 @@ const CandlestickChart = () => {
             offsetY: -5,
             text: 'Lock Time',
             position: 'right',
-            align: 'right', // выравнивание направо
+            align: 'right',
         },
         type: 'line',
-        strokeDashArray: 0, // убираем пунктир
-        borderWidth: 1, // уменьшаем ширину
+        strokeDashArray: 0,
+        borderWidth: 1,
     };
 
     const expireTimeLine = {
@@ -48,11 +48,11 @@ const CandlestickChart = () => {
             offsetY: -5,
             text: 'Expire Time',
             position: 'right',
-            align: 'right', // выравнивание направо
+            align: 'right',
         },
         type: 'line',
-        strokeDashArray: 0, // убираем пунктир
-        borderWidth: 1, // уменьшаем ширину
+        strokeDashArray: 0,
+        borderWidth: 1,
     };
 
     const updateChartData = () => {
@@ -88,11 +88,9 @@ const CandlestickChart = () => {
     }));
 
     const handleEntryPrice = (color) => {
-        // Убедимся, что chartData содержит элементы
         if (chartData.length === 0) return;
 
         const currentData = chartData[chartData.length - 1];
-        // Проверим, что currentData имеет свойство y с четырьмя элементами
         if (!currentData.y || currentData.y.length < 4) return;
 
         const entry = { time: currentData.x, price: currentData.y[3] };
@@ -193,21 +191,20 @@ const CandlestickChart = () => {
             zoom: {
                 enabled: true,
                 type: 'x',
-                zoomedArea: {
-                    fill: {
-                        color: '#90CAF9',
-                        opacity: 0.4,
-                    },
-                    stroke: {
-                        color: '#0D47A1',
-                        opacity: 0.7,
-                        width: 1,
-                    },
+                autoScaleYaxis: true,
+            },
+            toolbar: {
+                show: true,
+                tools: {
+                    download: true,
+                    selection: true,
+                    zoom: true,
+                    zoomin: true,
+                    zoomout: true,
+                    pan: true,
+                    reset: true,
                 },
-                pan: {
-                    enabled: true,
-                    mode: 'x',
-                }
+                autoSelected: 'pan',
             },
         },
         theme: {
@@ -302,7 +299,7 @@ const CandlestickChart = () => {
         const chart = chartRef.current.chart;
         if (chart) {
             const { minX, maxX } = chart.w.globals;
-            const moveFactor = (maxX - minX) * 0.1; // двигаем на 10% от текущего зума
+            const moveFactor = (maxX - minX) * 0.1;
             chart.updateOptions({
                 xaxis: {
                     min: minX - moveFactor,
@@ -316,7 +313,7 @@ const CandlestickChart = () => {
         const chart = chartRef.current.chart;
         if (chart) {
             const { minX, maxX } = chart.w.globals;
-            const moveFactor = (maxX - minX) * 0.1; // двигаем на 10% от текущего зума
+            const moveFactor = (maxX - minX) * 0.1;
             chart.updateOptions({
                 xaxis: {
                     min: minX + moveFactor,
