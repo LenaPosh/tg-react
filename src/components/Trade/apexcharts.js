@@ -323,8 +323,36 @@ const CandlestickChart = () => {
         }
     };
 
+    const handleMouseWheel = (event) => {
+        const chart = chartRef.current.chart;
+        if (!chart) return;
+
+        const {minX, maxX} = chart.w.globals;
+        const zoomFactor = 0.05; // Determines how much to zoom
+        const delta = event.deltaY; // Direction of the wheel scroll
+
+        let newMinX, newMaxX;
+        if (delta > 0) { // Zoom out
+            newMinX = minX - (maxX - minX) * zoomFactor;
+            newMaxX = maxX + (maxX - minX) * zoomFactor;
+        } else if (delta < 0) { // Zoom in
+            newMinX = minX + (maxX - minX) * zoomFactor;
+            newMaxX = maxX - (maxX - minX) * zoomFactor;
+        }
+
+        chart.updateOptions({
+            xaxis: {
+                min: newMinX,
+                max: newMaxX,
+            },
+        }, false, false); // Update options without redrawing chart
+    };
+
+
+
+
     return (
-        <div id="chart" style={{ marginTop: '40px' }}>
+        <div id="chart" onWheel={handleMouseWheel} style={{ marginTop: '40px' }}>
             <ReactApexChart
                 options={options}
                 series={[
