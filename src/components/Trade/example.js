@@ -1186,7 +1186,7 @@ const MyGraphSecond = () => {
         const container = containerRef.current;
         const chart = createChart(container, {
             width: 390,
-            height: 300,
+            height: 450,
             timeScale: {
                 timeVisible: true,
                 borderColor: "#D1D4DC",
@@ -1330,8 +1330,13 @@ const MyGraphSecond = () => {
         setChartType((prevType) => (prevType === 'candlestick' ? 'line' : 'candlestick'));
     };
 
+    useEffect(() => {
+        console.log(containerRef.current); // Выводит DOM-элемент
+        console.log(containerRef.current.style); // Выводит стили элемента
+    }, []);
+
     return (
-        <div style={{ marginLeft: '10px', marginTop: '40px', maxWidth: '600px', overflowX: 'auto' }}>
+        <div style={{ marginLeft: '10px', marginTop: '40px', maxWidth: '600px', overflowX: 'auto', height: '500px' }}>
             <button onClick={toggleChartType}>
                 Переключиться на {chartType === 'candlestick' ? 'линейный' : 'свечной'} график
             </button>
