@@ -1142,8 +1142,8 @@ const MyGraphSecond = () => {
             const line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
             line.setAttribute('x1', x);
             line.setAttribute('x2', x);
-            line.setAttribute('y1', '22%');
-            line.setAttribute('y2', '60%');
+            line.setAttribute('y1', '21%');
+            line.setAttribute('y2', '80%');
             line.setAttribute('stroke', color);
             line.setAttribute('stroke-width', '2');
             if (isDashed) {
@@ -1154,7 +1154,7 @@ const MyGraphSecond = () => {
             // Создаем текст
             const textElement = document.createElementNS("http://www.w3.org/2000/svg", 'text');
             textElement.setAttribute('x', x);
-            textElement.setAttribute('y', '25%'); // Вы можете скорректировать это значение
+            textElement.setAttribute('y', '72%'); // Вы можете скорректировать это значение
             textElement.setAttribute('fill', color);
             textElement.style.fontSize = '12px';
             textElement.textContent = text;
@@ -1163,10 +1163,10 @@ const MyGraphSecond = () => {
             textElement.setAttribute('text-anchor', 'middle');
             textElement.setAttribute('alignment-baseline', 'middle');
 
-            // Сначала смещаем, затем вращаем
-            // const translateY = -30; // Подберите значение, которое лучше всего подходит для вашего случая
-            // textElement.style.transform = `translate(0, ${translateY}px) rotate(-90deg)`;
-            textElement.style.transformOrigin = 'center';
+            // Вращаем текст на 90 градусов
+            const margin = -5; // Размер отступа в пикселях
+            textElement.style.transform = `translate(${margin}px, 0) rotate(-90deg)`;
+            textElement.style.transformOrigin = `${x}px 72%`;
 
             // Добавление текста в SVG
             svg.appendChild(textElement);
@@ -1336,7 +1336,7 @@ const MyGraphSecond = () => {
     }, []);
 
     return (
-        <div style={{ marginLeft: '10px', marginTop: '40px', maxWidth: '600px', overflowX: 'auto', height: '500px' }}>
+        <div style={{ marginTop: '40px', maxWidth: '600px', overflowX: 'auto', height: '500px' }}>
             <button onClick={toggleChartType}>
                 Переключиться на {chartType === 'candlestick' ? 'линейный' : 'свечной'} график
             </button>
