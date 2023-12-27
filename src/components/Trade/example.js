@@ -1154,7 +1154,7 @@ const MyGraphSecond = () => {
             // Создаем текст
             const textElement = document.createElementNS("http://www.w3.org/2000/svg", 'text');
             textElement.setAttribute('x', x);
-            textElement.setAttribute('y', '40%'); // Вы можете скорректировать это значение
+            textElement.setAttribute('y', '25%'); // Вы можете скорректировать это значение
             textElement.setAttribute('fill', color);
             textElement.style.fontSize = '12px';
             textElement.textContent = text;
@@ -1164,18 +1164,18 @@ const MyGraphSecond = () => {
             textElement.setAttribute('alignment-baseline', 'middle');
 
             // Сначала смещаем, затем вращаем
-            const translateY = -30; // Подберите значение, которое лучше всего подходит для вашего случая
-            textElement.style.transform = `translate(0, ${translateY}px) rotate(-90deg)`;
+            // const translateY = -30; // Подберите значение, которое лучше всего подходит для вашего случая
+            // textElement.style.transform = `translate(0, ${translateY}px) rotate(-90deg)`;
             textElement.style.transformOrigin = 'center';
 
             // Добавление текста в SVG
             svg.appendChild(textElement);
         }
-        const lockTimeX = 48; // 48% для lockTime
-        const expirationTimeX = 55; // 55% для expirationTime
+        const lockTimeX = 43; // 48% для lockTime
+        const expirationTimeX = 52; // 55% для expirationTime
 
         createLineWithText(560, lockTimeX, 'blue', true, 'lockTime');
-        createLineWithText(570, expirationTimeX, 'red', false, 'expirationTime');
+        createLineWithText(600, expirationTimeX, 'red', false, 'expirationTime');
 
         // Добавляем SVG в контейнер графика
         container.appendChild(svg);
@@ -1185,7 +1185,7 @@ const MyGraphSecond = () => {
     useEffect(() => {
         const container = containerRef.current;
         const chart = createChart(container, {
-            width: 410,
+            width: 390,
             height: 300,
             timeScale: {
                 timeVisible: true,
@@ -1213,62 +1213,6 @@ const MyGraphSecond = () => {
 
         createVerticalLines(chart, container);
 
-
-        // const lockTimeData = {
-        //     time: {
-        //         year: 2018,
-        //         month: 12,
-        //         day: 18
-        //     },
-        //     open: 63.47554821643351,
-        //     high: 73.6284398311906,
-        //     low: 58.996882824636856,
-        //     close: 58.996882824636856
-        // };
-        // const expirationTimeData = {
-        //     time: {
-        //         year: 2018,
-        //         month: 12,
-        //         day: 29
-        //     },
-        //     open: 75.65816205696441,
-        //     high: 75.65816205696441,
-        //     low: 63.710206287837266,
-        //     close: 63.710206287837266
-        // };
-        //
-        // const lockTime = new Date(lockTimeData.time.year, lockTimeData.time.month - 1, lockTimeData.time.day, 12, 0, 0, 0).getTime();
-        // const expirationTime = new Date(expirationTimeData.time.year, expirationTimeData.time.month - 1, expirationTimeData.time.day, 15, 0, 0, 0).getTime();
-        //
-        // function addVerticalLine(chart, time) {
-        //     // Получаем высоту из опций чарта или устанавливаем конкретное значение
-        //     const chartHeight = chart.options().height || 300;
-        //
-        //     const lineSeries = chart.addLineSeries({
-        //         color: 'rgba(255, 0, 0, 0.8)',
-        //         lineWidth: 2,
-        //         priceLineVisible: false,
-        //         priceLabelVisible: false,
-        //         lastValueVisible: false,
-        //     });
-        //
-        //     lineSeries.setData([
-        //         { time: time / 1000, value: 0 }, // минимальное значение для масштаба Y (можно использовать 0 или другое значение в зависимости от ваших данных)
-        //         { time: time / 1000, value: chartHeight }, // максимальное значение для масштаба Y
-        //     ]);
-        // }
-
-        // chart.addHistogramSeries({
-        //     priceScaleId: 'vertical',
-        //     color: 'rgb(193,216,239)',
-        //     scaleMargins: { top: 0, bottom: 0 },
-        //     width: 0.5,
-        //     thinBars: true,
-        //     style: 5,
-        // }).setData([
-        //     {time: lockTimeData.time, value: 1},
-        //     {time: expirationTimeData.time, value: 1},
-        // ]);
 
 
         let series;
