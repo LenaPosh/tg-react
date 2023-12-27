@@ -1135,13 +1135,15 @@ const MyGraphSecond = () => {
         svg.style.zIndex = '1'; // Убедитесь, что SVG находится поверх графика
 
         // Функция для создания линии
-        function createLineWithText(x, color, isDashed, text) {
-            // Создаем линию
+        function createLineWithText(chartWidth, xPercent, color, isDashed, text) {
+            // Преобразовываем проценты в пиксели
+            const x = chartWidth * (xPercent / 100);
+
             const line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
             line.setAttribute('x1', x);
             line.setAttribute('x2', x);
-            line.setAttribute('y1', '20%');
-            line.setAttribute('y2', '57%');
+            line.setAttribute('y1', '22%');
+            line.setAttribute('y2', '60%');
             line.setAttribute('stroke', color);
             line.setAttribute('stroke-width', '2');
             if (isDashed) {
@@ -1152,28 +1154,28 @@ const MyGraphSecond = () => {
             // Создаем текст
             const textElement = document.createElementNS("http://www.w3.org/2000/svg", 'text');
             textElement.setAttribute('x', x);
-            textElement.setAttribute('y', '50%'); // Регулируем положение текста
-            textElement.setAttribute('dy', '-3');
+            textElement.setAttribute('y', '40%'); // Вы можете скорректировать это значение
             textElement.setAttribute('fill', color);
             textElement.style.fontSize = '12px';
             textElement.textContent = text;
 
-            // Выравниваем текст по центру линии
+            // Выравнивание текста по центру линии
             textElement.setAttribute('text-anchor', 'middle');
-            textElement.style.transform = `rotate(-90deg)`;
-            textElement.style.transformOrigin = `${x} 50%`;
+            textElement.setAttribute('alignment-baseline', 'middle');
 
+            // Сначала смещаем, затем вращаем
+            const translateY = -30; // Подберите значение, которое лучше всего подходит для вашего случая
+            textElement.style.transform = `translate(0, ${translateY}px) rotate(-90deg)`;
+            textElement.style.transformOrigin = 'center';
+
+            // Добавление текста в SVG
             svg.appendChild(textElement);
-
         }
+        const lockTimeX = 48; // 48% для lockTime
+        const expirationTimeX = 55; // 55% для expirationTime
 
-        // Рассчитываем позиции для линий
-        const lockTimeX = '47%'; // Замените на ваше вычисленное значение
-        const expirationTimeX = '55%'; // Замените на ваше вычисленное значение
-
-        // Создаем две линии
-        createLineWithText(lockTimeX, 'blue', true, 'lockTime'); // Синяя линия будет прерывистой
-        createLineWithText(expirationTimeX, 'red', false, 'expirationTime');
+        createLineWithText(560, lockTimeX, 'blue', true, 'lockTime');
+        createLineWithText(570, expirationTimeX, 'red', false, 'expirationTime');
 
         // Добавляем SVG в контейнер графика
         container.appendChild(svg);
@@ -1183,7 +1185,7 @@ const MyGraphSecond = () => {
     useEffect(() => {
         const container = containerRef.current;
         const chart = createChart(container, {
-            width: 450,
+            width: 410,
             height: 300,
             timeScale: {
                 timeVisible: true,
