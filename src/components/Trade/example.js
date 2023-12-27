@@ -1385,7 +1385,7 @@ const MyGraphSecond = () => {
     };
 
     return (
-        <div style={{ marginLeft: '20px', marginTop: '40px' }}>
+        <div style={{ marginLeft: '10px', marginTop: '40px',  maxWidth: '600px' }}>
             <button onClick={toggleChartType}>
                 Переключиться на {chartType === 'candlestick' ? 'линейный' : 'свечной'} график
             </button>
