@@ -1143,7 +1143,7 @@ const MyGraphSecond = () => {
             line.setAttribute('x1', x);
             line.setAttribute('x2', x);
             line.setAttribute('y1', '19%');
-            line.setAttribute('y2', '65%');
+            line.setAttribute('y2', '70%');
             line.setAttribute('stroke', color);
             line.setAttribute('stroke-width', '2');
             if (isDashed) {
@@ -1154,7 +1154,7 @@ const MyGraphSecond = () => {
             // Создаем текст
             const textElement = document.createElementNS("http://www.w3.org/2000/svg", 'text');
             textElement.setAttribute('x', x);
-            textElement.setAttribute('y', '57%'); // Вы можете скорректировать это значение
+            textElement.setAttribute('y', '62%'); // Вы можете скорректировать это значение
             textElement.setAttribute('fill', color);
             textElement.style.fontSize = '12px';
             textElement.textContent = text;
@@ -1164,9 +1164,9 @@ const MyGraphSecond = () => {
             textElement.setAttribute('alignment-baseline', 'middle');
 
             // Вращаем текст на 90 градусов
-            const margin = -6; // Размер отступа в пикселях
-            textElement.style.transform = `translate(${margin}px, 0) rotate(-90deg)`;
-            textElement.style.transformOrigin = `${x}px 57%`;
+            // const margin = -5; // Размер отступа в пикселях
+            // textElement.style.transform = `translate(${margin}px, 0) rotate(-90deg)`;
+            // textElement.style.transformOrigin = `${x}px 52%`;
 
             // Добавление текста в SVG
             svg.appendChild(textElement);
