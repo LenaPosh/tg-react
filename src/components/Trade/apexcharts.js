@@ -14,6 +14,8 @@ const CandlestickChart = () => {
     const [redEntry, setRedEntry] = useState(null);
     const [greenEntry, setGreenEntry] = useState(null);
 
+    const [touchStart, setTouchStart] = useState(null);
+    const [touchPosition, setTouchPosition] = useState(null);
 
     const lockTimeLine = {
         x: lockTime,
@@ -347,12 +349,49 @@ const CandlestickChart = () => {
             },
         }, false, false); // Update options without redrawing chart
     };
+    const handleTouchStart = (event) => {
+        setTouchStart(event.touches[0].clientX);
+        setTouchPosition(event.touches[0].clientX);
+    };
 
+    const handleTouchMove = (event) => {
+        setTouchPosition(event.touches[0].clientX);
+    };
 
+    const handleTouchEnd = () => {
+        if (!touchStart || !touchPosition) return;
+
+        const chart = chartRef.current.chart;
+        if (chart) {
+            const { minX, maxX } = chart.w.globals;
+            const moveFactor = (maxX - minX) * 0.1;
+
+            // Определение направления панорамирования
+            const isSwipeRight = touchPosition > touchStart;
+            const newMinX = minX - (isSwipeRight ? moveFactor : -moveFactor);
+            const newMaxX = maxX - (isSwipeRight ? moveFactor : -moveFactor);
+
+            chart.updateOptions({
+                xaxis: {
+                    min: newMinX,
+                    max: newMaxX,
+                },
+            });
+        }
+        setTouchStart(null);
+        setTouchPosition(null);
+    };
 
 
     return (
-        <div id="chart" onWheel={handleMouseWheel} style={{ marginTop: '40px' }}>
+        <div
+            id="chart"
+            onWheel={handleMouseWheel}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            style={{ marginTop: '40px' }}
+        >
             <ReactApexChart
                 options={options}
                 series={[
