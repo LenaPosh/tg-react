@@ -1385,11 +1385,11 @@ const MyGraphSecond = () => {
     };
 
     return (
-        <div style={{ marginLeft: '10px', marginTop: '40px',  maxWidth: '600px' }}>
+        <div style={{ marginLeft: '10px', marginTop: '40px', maxWidth: '600px', overflowX: 'auto' }}>
             <button onClick={toggleChartType}>
                 Переключиться на {chartType === 'candlestick' ? 'линейный' : 'свечной'} график
             </button>
-            <div ref={containerRef}></div>
+            <div ref={containerRef} style={{ width: '100%', height: '300px' }}></div>
         </div>
     );
 };
