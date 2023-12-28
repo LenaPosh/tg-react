@@ -1154,7 +1154,7 @@ const MyGraphSecond = () => {
             // Создаем текст
             const textElement = document.createElementNS("http://www.w3.org/2000/svg", 'text');
             textElement.setAttribute('x', x);
-            textElement.setAttribute('y', '67%'); // Вы можете скорректировать это значение
+            textElement.setAttribute('y', '40%'); // Вы можете скорректировать это значение
             textElement.setAttribute('fill', color);
             textElement.style.fontSize = '12px';
             textElement.textContent = text;
@@ -1166,7 +1166,7 @@ const MyGraphSecond = () => {
             // Вращаем текст на 90 градусов
             const margin = -5; // Размер отступа в пикселях
             textElement.style.transform = `translate(${margin}px, 0) rotate(-90deg)`;
-            textElement.style.transformOrigin = `${x}px 67%`;
+            textElement.style.transformOrigin = `${x}px 40%`;
 
             // Добавление текста в SVG
             svg.appendChild(textElement);
