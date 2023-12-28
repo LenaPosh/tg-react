@@ -1154,7 +1154,7 @@ const MyGraphSecond = () => {
             // Создаем текст
             const textElement = document.createElementNS("http://www.w3.org/2000/svg", 'text');
             textElement.setAttribute('x', x);
-            textElement.setAttribute('y', '40%'); // Вы можете скорректировать это значение
+            textElement.setAttribute('y', '30%'); // Вы можете скорректировать это значение
             textElement.setAttribute('fill', color);
             textElement.style.fontSize = '12px';
             textElement.textContent = text;
