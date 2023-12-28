@@ -1165,8 +1165,8 @@ const MyGraphSecond = () => {
 
             // Вращаем текст на 90 градусов
             const margin = -5; // Размер отступа в пикселях
-            textElement.style.transform = `translate(${margin}px, 0) rotate(-90deg)`;
-            textElement.style.transformOrigin = `${x}px 40%`;
+            // textElement.style.transform = `translate(${margin}px, 0) rotate(-90deg)`;
+            // textElement.style.transformOrigin = `${x}px 40%`;
 
             // Добавление текста в SVG
             svg.appendChild(textElement);
